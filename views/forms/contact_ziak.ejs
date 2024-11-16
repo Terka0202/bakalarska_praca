@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" class="html_body_ziak">
+<head>
+    <%- include("../shared/partials/head") %>
+    <link rel="stylesheet" href="/css/style-ziak.css">
+    <title>Domovská stránka</title>
+</head>
+<body class="html_body_ziak">
+    <!--BODY-->
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+    
+            <!-- Sidebar -->
+            <%- include("../shared/partials/sidebar_ziak") %>
+    
+            <div class="col">
+
+                <!--Header-->
+                <%- include("../shared/partials/header") %>
+    
+                <!-- Hlavný obsah -->
+                <div style="padding: 20px;">
+                    <div class="row justify-content-center d-flex">
+                        <div class="col-md-8 col-12">
+                            <h1 class="nadpis_kontakt">Kontaktný formulár</h1>
+                            <p class="kontakt_text">Ak máš akékoľvek otázky či už ohľadom úloh alebo materiálov, neváhaj ma kontaktovať!</p>
+                        </div>
+                    </div>
+                    <form action="">
+                        <div class="row justify-content-center d-flex">
+                            <div class="col-md-4 col-12">
+                                <input type="text" class="form-control form_input" id="name" name="name" placeholder="Meno">
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <input type="text" class="form-control form_input" id="surname" name="surname" placeholder="Priezvisko">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center d-flex">
+                            <div class="col-md-8 col-12">
+                                <input type="email" class="form-control form_input" id="email" name="email" placeholder="E-mail">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center d-flex">
+                            <div class="col-md-8 col-12">
+                                <textarea name="text" id="text" placeholder="Správa" rows="8" class="form-control form_input" style="margin-bottom: 50px;"></textarea>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center d-flex">
+                            <div class="col-md-3 col-6">
+                                <button type="submit" class="button_odoslat">Odoslať</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--BODY-->
+
+    <!--SCRIPTY-->
+    <script src="/javascript/index_ziak_js.js" defer></script>
+
+</body>
+</html>

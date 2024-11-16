@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="html_body_prihlasenie">
+<head>
+    <%- include("../shared/partials/head") %>
+    <title>Prihlásenie</title>
+</head>
+<body class="html_body_prihlasenie">
+    <!--HEADER-->
+    <%- include("../shared/partials/header") %>
+    <!--HEADER-->
+
+    <!--BODY-->
+    <div class="container-fluid position_relative_prihlasenie">
+        <div class="row">
+
+            <div class="col-md-12">
+                <img src="/obrazky/teacher.png" class="centered-image obrazok_prihlasenie">
+            </div>
+
+            <!--PRVA POLOVICA-->
+            <div class="col-md-6 p-0 bg_div_first">
+                <div class="container">
+                    <div class="row justify-content-center d-flex odsadenie">
+                        <div class="col-md-6">
+                            <h4 class="text-center nadpis_prihlasenie" style="margin-bottom: 20px;">Vitajte, prihláste sa ◡̈ </h4>
+                        </div>
+                    </div>
+
+                    <!--ERROR MESSAGE-->
+                    <% if (error) { %>
+                        <div style="color: red; font-family: 'News Cycle', sans-serif;" class="justify-content-center d-flex"><%= error %></div>
+                    <% } %>
+                    <!--ERROR MESSAGE-->
+
+                    <form action="/prihlasenie-ucitel" method="POST">
+                        <div class="row justify-content-center d-flex">
+                            <div class="col-md-6">
+                                <input type="email" class="form-control form_prihlasenie" id="email" name="email" placeholder="E-mail">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center d-flex">
+                            <div class="col-md-6">
+                                <input type="password" class="form-control form_prihlasenie" id="password" name="password" placeholder="Heslo">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center d-flex">
+                            <div class="col-md-6">
+                                <button class="prihlasenie_button" type="submit" id="submit" name="submit">Prihlásiť sa</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--DRUHA POLOVICA-->
+            <div class="col-md-6 p-0 bg_div_second">
+                <div class="container">
+                    <div class="row justify-content-center d-flex odsadenie">
+                        <div class="col-md-6">
+                            <h4 class="text-center nadpis_prihlasenie">Ešte nemáte vytvorený účet?</h4>
+                            <span class="text-center justify-content-center d-flex span_prihlasenie">Tak smelo do toho ◡̈</span>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center d-flex">
+                        <div class="col-md-6">
+                            <a href="/registracia-ucitel" class="registracia_button" style="margin-top: 40px;">Zaregistrovať sa</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--BODY-->
+
+    <!--FOOTER-->
+    <!--naschval sa nenachadza-->
+    <!--FOOTER-->
+</body>
+</html>

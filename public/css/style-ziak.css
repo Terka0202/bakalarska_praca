@@ -1,0 +1,353 @@
+/*BODY*/
+.html_body_ziak {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.header_tablet_ziak {
+    display: none !important;
+}
+/*BODY*/
+/*----------------------------------------------------------------------------------------------------------------*/
+
+/*SIDEBAR*/
+.bg_sidebar {
+    background-color: #081629;
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: block;
+}
+
+.text_color {
+    color: white;
+}
+
+.text_color:hover {
+    color: #c7ead7;
+}
+
+/*SIDEBAR*/
+/*----------------------------------------------------------------------------------------------------------------*/
+
+/*INDEX*/
+.ulohy_odkaz {
+    font-family: 'Amatic SC', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #102A4B;
+    text-decoration: none;
+    text-align: center;
+}
+
+.ulohy_odkaz:hover {
+    color: #102A4B;
+}
+
+.div_odkaz {
+    line-height: 8;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.div_odkaz:hover {
+    transform: scale(1.05);
+}
+
+.div_dateTime {
+    background-color: rgba(238, 238, 238, 0.671);
+    border-radius: 30px;
+    padding: 10px;
+    height: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.div_date {
+    background-image: linear-gradient(to bottom right, #081629, #b3dde9b2, #ffdfe7);
+    border-radius: 30px;
+    margin: 8px;
+    margin-left: 0px;
+    align-items: center; 
+    display: flex;         
+    justify-content: center;
+    height: 300px;
+}
+
+.current_date {
+    font-size: 2.5vw;
+    font-family: 'Antonio', sans-serif;
+    font-weight: 500;
+    color: #102A4B;
+    align-items: center;
+}
+
+.current_year {
+    font-size: 2vw;
+    font-family: 'Antonio', sans-serif;
+    font-weight: 200;
+    color: #102A4B;
+    align-items: center;
+}
+
+.current_time {
+    font-size: 2vw;
+    font-family: 'Antonio', sans-serif;
+    font-weight: 200;
+    color: white;
+    align-items: center;
+}
+
+.div_nameday_day {
+    margin: 10px;
+    align-items: center; 
+    display: flex;         
+    justify-content: center;
+}
+
+.nameday {
+    font-size: 2.5vw;
+    font-family: 'Antonio', sans-serif;
+    font-weight: 500;
+    color: #102A4B;
+    align-items: center;
+}
+
+.text_nameday {
+    font-size: 1vw;
+    font-family: 'Antonio', sans-serif;
+    font-weight: 200;
+    color: #102A4B;
+    align-items: center;
+}
+
+.oznamenia {
+    background-color: #b3dde9b2;
+    min-height: 230px;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.oznamenia_text {
+    font-family: 'News Cycle', sans-serif;
+    font-size: 15px;
+    color: #102A4B;
+}
+
+.oznamenia_nadpis {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/*INDEX*/
+/*----------------------------------------------------------------------------------------------------------------*/
+
+/*PROFIL*/
+.nadpis_profil {
+    color: #309645;
+    font-family: 'Amatic SC', sans-serif;
+    font-weight: bold;
+}
+
+.container_odsadenie {
+    margin-top: 180px;
+}
+
+.img_profil {
+    margin-bottom: 180px;
+}
+
+.pen_img {
+    border: none;
+    background-color: transparent;
+}
+
+.profil_udaje {
+    font-family: 'Amatic SC', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: #309645;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.span_profil {
+    font-family: 'News Cycle', 'sans-serif';
+    color: #102A4B;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.border_ {
+    margin-top: 20px;
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button_heslo {
+    border: none;
+    background-color: #ffcd0b;
+    border-radius: 5px;
+    color: #102A4B;
+    padding: 5px 10px 5px 10px;
+    font-family: 'News Cycle', sans-serif;
+}
+/*PROFIL*/
+/*----------------------------------------------------------------------------------------------------------------*/
+
+/*KONTAKT*/
+.button_odoslat {
+    width: 100%;
+    border-radius: 5px;
+    line-height: 1.5;
+    border: none;
+    font-family: "Amatic SC", sans-serif;
+    color: #102A4B;
+    font-size: 25px;
+    margin-bottom: 50px;
+    background-color: #ffcd0b;
+}
+/*KONTAKT*/
+/*----------------------------------------------------------------------------------------------------------------*/
+
+/*DOMACE ULOHY*/
+.div_domace_ulohy {
+    line-height: 5;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    background-color: rgb(240, 240, 240);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+/*DOMACE ULOHY*/
+/*----------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+/*MEDIA - MOBILY, TABLETY, PC*/
+
+@media (max-width: 767px) {
+
+    /*vsade - moze/nemusi byt*/
+    .html_body_ziak {
+        overflow-y: auto;
+    } 
+
+    /*sidebar*/
+    .bg_sidebar {
+        display: none !important;
+    }
+
+    /*profil*/
+    .img_profil {
+        margin-bottom: 0px;
+    }
+
+    .container_odsadenie {
+        margin-top: 100px;
+    }
+    
+    
+    /*index*/
+    .div_nameday_day {
+        height: 150px;
+    }
+
+    .current_time {
+        font-size: 6vw;
+    }
+
+    .nameday {
+        font-size: 10vw;
+    }
+
+    .text_nameday {
+        font-size: 5vw;
+    }
+
+    .current_date {
+        font-size: 10vw;
+    }
+    
+    .current_year {
+        font-size: 6vw;
+    }
+    
+}
+
+@media (min-width: 768px) and (max-width: 1024px) { 
+
+    /*vsade - moze/nemusi byt*/
+    .html_body_ziak {
+        overflow-y: auto;
+    } 
+
+    .header_desktop {
+        display: none !important;
+    }
+
+    .header_mobil_tablet {
+        display: block !important;
+    }
+    
+    /*sidebar*/
+    .bg_sidebar {
+        display: none !important;
+    }
+
+     /*index*/
+     .ulohy_odkaz {
+        font-size: 40px;
+    }
+
+    .current_date {
+        font-size: 5vw;
+    }
+    
+    .current_year {
+        font-size: 4vw;
+    }
+    
+    .current_time {
+        font-size: 4vw;
+    }
+    
+    .nameday {
+        font-size: 5vw;
+    }
+    
+    .text_nameday {
+        font-size: 2.5vw;
+    }
+    
+    .oznamenia_text {
+        font-size: 25px;
+    }
+
+    .oznamenia_nadpis {
+        font-size: 45px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    /*sidebar*/
+    .bg_sidebar {
+        margin: 20px;
+        border-radius: 15px;
+        height: calc(100vh - 40px);
+    }
+}
+
+/*MEDIA - MOBILY, TABLETY, PC*/
+/*----------------------------------------------------------------------------------------------------------------*/

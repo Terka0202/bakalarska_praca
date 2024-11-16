@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" class="html_body_ziak">
+<head>
+    <%- include("../../shared/partials/head") %>
+    <link rel="stylesheet" href="/css/style-ziak.css">
+    <title>Domovská stránka</title>
+</head>
+<body class="html_body_ziak">
+    <!--BODY-->
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+    
+            <!-- Sidebar -->
+            <%- include("../../shared/partials/sidebar_ziak") %>
+    
+            <div class="col">
+
+                <!--Header-->
+                <%- include("../../shared/partials/header") %>
+    
+                <!-- Hlavný obsah -->
+                <div style="padding: 20px;">
+                    <div class="row">
+
+                        <!---------------------------------------------prva polovica------------------------------------------->
+                        <div class="col-md-12 col-lg-12 col-xl-6">
+                            <div class="row" style="margin-top: 30px;">
+                                <div class="col-md-12 col-lg-12 col-xl-4 text-center">
+                                    <div style="background-color: #c7ead7;" class="div_odkaz">
+                                        <a href="/ziak/domace-ulohy" class="ulohy_odkaz">Domáce úlohy</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-12 col-xl-4 text-center">
+                                    <div style="background-color: #fff183;" class="div_odkaz">
+                                        <a href="/tyzdenne-vyzvy" class="ulohy_odkaz">Týždenné výzvy</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-12 col-xl-4 text-center">
+                                    <div style="background-color: #ffdfe7;" class="div_odkaz">
+                                        <a href="/exkurzie" class="ulohy_odkaz">Exkurzie</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--KALENADR-->
+                            <div class="div_dateTime">
+                                <div class="row">
+
+                                    <!--prva polovica-->
+                                    <div class="col-md-6">
+                                        <div class="row justify-content-center d-flex">
+                                            <div class="col-10 col-md-10 div_date flex-column">
+                                                <span class="text-center current_time" id="current_time"><!--čas--></span>
+                                                <hr style="border: 1px solid #102A4B; width: 50%;">
+                                                <span class="text-center current_date" id="date_"><!--datum--></span>
+                                                <span class="text-center current_year" id="year"><!--rok--></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--druha polovica-->
+                                    <div class="col-md-6 flex-column justify-content-center align-items-center d-flex">
+                                        <div class="row justify-content-center w-100">
+                                            <div class="col-10 div_nameday_day w-100 flex-column" style="border-left: 8px solid #102A4B;">
+                                                <span class="text-center text_nameday">DNES JE</span>
+                                                <span class="text-center nameday" id="days"><!--deň--></span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center w-100 mt-4">
+                                            <div class="col-10 div_nameday_day w-100 flex-column" style="border-left: 8px solid #102A4B">
+                                                <span class="text-center text_nameday">MENINY MÁ</span>
+                                                <span class="text-center nameday" id="nameday">Nezadané</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!---------------------------------------------druha polovica------------------------------------------->
+                        <!--PC-->
+                        <div class="col-md-12 col-lg-12 col-xl-6">
+                            <div class="row justify-content-center d-flex" style="margin-top: 30px;">
+                                <div class="col-md-10 col-lg-10 col-xl-10 text-center oznamenia">
+                                 
+                                    <h1 class="oznamenia_nadpis text-center">Zoznam udalostí</h1>
+
+                                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mb-3">
+                                        <li class="nav-item">
+                                            <i class="fs-2 bi-journal-check"></i> 
+                                            <span class="oznamenia_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis.</span>
+                                        </li>
+                                        <li class="nav-item">
+                                            <i class="fs-2 bi-bell"></i> 
+                                            <span class="oznamenia_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis.</span>
+                                        </li>
+                                        <li class="nav-item">
+                                            <i class="fs-2 bi-geo-alt"></i> 
+                                            <span class="oznamenia_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis.</span>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="row justify-content-center d-flex">
+                                <img src="/obrazky/edo.png" style="max-width: 400px; margin-top: 90px;" class="text-center img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--BODY-->
+
+    <!--SCRIPTY-->
+    <script src="/javascript/index_ziak_js.js" defer></script>
+
+</body>
+</html>

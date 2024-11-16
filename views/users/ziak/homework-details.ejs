@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" class="html_body_ziak">
+<head>
+    <%- include("../../shared/partials/head") %>
+    <link rel="stylesheet" href="/css/style-ziak.css">
+    <title>Domáce úlohy</title>
+</head>
+<body class="html_body_ziak">
+    <!--BODY-->
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+    
+            <!-- Sidebar -->
+            <%- include("../../shared/partials/sidebar_ziak") %>
+    
+            <div class="col">
+
+                <!--Header-->
+                <%- include("../../shared/partials/header") %>
+    
+                <!-- Hlavný obsah -->
+                <div style="padding: 20px;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1 style="margin-bottom: 50px; margin-top: 30px;"><%= homework.title_homework %></h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p><%= homework.description_homework %></p>
+                        </div>
+                    </div>
+
+                   <form action="/ziak/domace-ulohy/<%= homework.id_homework %>" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <textarea id="text_homework" name="text_homework" rows="5" required class="form-control form_input" placeholder="Správa" style="margin-bottom: 30px;"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label for="file_path" class="margin_input_upload">PDF súbor:</label>
+                                <input type="file" id="file_path" name="file_path" accept="application/pdf" required class="form-control input_upload" style="margin-bottom: 50px;">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button type="submit" class="button_odoslat">Poslať</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row justify-content-end d-flex">
+                        <div class="col-md-6">
+                            <h3 style="margin-bottom: 30px; margin-top: 80px; text-align: right; margin-right: 50px;">
+                                <a href="/ziak/domace-ulohy">
+                                    <i class="fs-1 bi-box-arrow-right" style="color: red;"></i>
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--BODY-->
+
+    <!--SCRIPTY-->
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="html_body">
+<head>
+    <%- include("../shared/partials/head") %>
+    <title>Registrácia</title>
+</head>
+<body class="html_body">
+    <!--HEADER-->
+    <%- include("../shared/partials/header") %>
+    <!--HEADER-->
+
+    <!--BODY-->
+    <div class="container container_registracia">
+        <div class="row justify-content-center d-flex">
+            <div class="col-md-8 col-12">
+                <h1 class="nadpis_registracia">Registrácia <span style="color: #309645; font-family: 'Antonio', sans-serif;">žiak</span></h1>
+            </div>
+        </div>
+        
+        <!--ERROR MESSAGE-->
+        <% if (error) { %>
+            <div style="color: red; font-family: 'News Cycle', sans-serif;" class="justify-content-center d-flex"><%= error %></div>
+        <% } %>
+        <!--ERROR MESSAGE-->
+
+        <form action="/registracia-ziak" method="POST">
+            <div class="row justify-content-center d-flex">
+                <div class="col-md-4">
+                    <input type="text" class="form-control registracia_input" id="name" name="name" placeholder="Meno" value="<%= loginData.name %>">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control registracia_input" id="surname" name="surname" placeholder="Priezvisko" value="<%= loginData.surname %>">
+                </div>
+            </div>
+            <div class="row justify-content-center d-flex">
+                <div class="col-md-8 col-12">
+                    <input type="email" class="form-control registracia_input" id="email" name="email" placeholder="E-mail" value="<%= loginData.email %>">
+                </div>
+            </div>
+            <div class="row justify-content-center d-flex">
+                <div class="col-md-8 col-12">
+                    <input type="password" class="form-control registracia_input" id="password" name="password" placeholder="Heslo">
+                </div>
+            </div>
+            <div class="row justify-content-center d-flex">
+                <div class="col-md-8 col-12">
+                    <input type="password" class="form-control registracia_input" id="password_repeat" name="password_repeat" placeholder="Potvrdiť heslo">
+                </div>
+            </div>
+            <div class="row justify-content-center d-flex">
+                <div class="col-md-3 col-6">
+                    <button type="submit" class="registracia_button_">Odoslať</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--BODY-->
+
+    <!--FOOTER-->
+    <%- include("../shared/partials/fixed_footer") %>
+
+    <!--MOBIL-->
+    <footer class="footer_mobile fixed-bottom">
+        <div class="container">
+            <div class="row justify-content-center d-flex">
+                <div class="col-md-3 text-center">
+                    <span style="font-size: 13px; font-weight: bold; text-align: center;">©</span>
+                    <span class="span_footer">2024 biologiasedom.sk</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--MOBIL-->
+
+    <!--FOOTER-->
+</body>
+</html>

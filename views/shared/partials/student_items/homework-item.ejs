@@ -1,0 +1,28 @@
+<tr data-id_homework="<%= H.id_homework %>">
+    <td><%= H.title_homework %></td>
+    <td>
+        <%= new Date(H.dateTime).toLocaleString('sk-SK', { 
+            day: '2-digit', // 2-digit naformatuje na 2-ciferne cislo
+            month: '2-digit',
+            year: 'numeric', // numeric zas da plný format roku napr. 2024
+            hour: '2-digit', 
+            minute: '2-digit' 
+        }) %>
+    </td>
+    <td>
+        <%= new Date(H.deadline).toLocaleString('sk-SK', { 
+            day: '2-digit', 
+            month: '2-digit', 
+            year: 'numeric', 
+            hour: '2-digit', 
+            minute: '2-digit' 
+        }) %>
+    </td>
+    <td>
+        <a href="/ziak/domace-ulohy/<%= H.id_homework %>">
+            <i class="fs-4 bi-box-arrow-in-up-right"></i>
+        </a>
+    </td>
+    <td>odovzdané</i></td>
+    <td><i class="fs-4 bi-check2"></i></td>
+</tr>

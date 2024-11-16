@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" class="html_body">
+<head>
+    <%- include("../shared/partials/head") %>
+    <title>Kontakt</title>
+</head>
+<body class="html_body">
+    <!--HEADER-->
+    <%- include("../shared/partials/header") %>
+    <!--HEADER-->
+
+    <!--BODY-->
+    <div class="container container_kontakt">
+        <div class="row justify-content-center d-flex">
+            <div class="col-md-8 col-12">
+                <h1 class="nadpis_kontakt">Kontaktný formulár</h1>
+                <p class="kontakt_text">Ak máte akékoľvek otázky či už ohľadom webovej stránky alebo by ste sa chceli dostať do Edovho kolektívu, neváhajte ma kontaktovať!</p>
+            </div>
+        </div>
+        <form action="">
+            <div class="row justify-content-center d-flex">
+                <div class="col-md-4">
+                    <input type="text" class="form-control form_input" id="name" name="name" placeholder="Meno">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control form_input" id="surname" name="surname" placeholder="Priezvisko">
+                </div>
+            </div>
+            <div class="row justify-content-center d-flex">
+                <div class="col-md-8 col-12">
+                    <input type="email" class="form-control form_input" id="email" name="email" placeholder="E-mail">
+                </div>
+            </div>
+            <div class="row justify-content-center d-flex">
+                <div class="col-md-8 col-12">
+                    <textarea name="text" id="text" placeholder="Správa" rows="8" class="form-control form_input" style="margin-bottom: 50px;"></textarea>
+                </div>
+            </div>
+            <div class="row justify-content-center d-flex">
+                <div class="col-md-3 col-6">
+                    <button type="submit" class="form_button">Odoslať</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--BODY-->
+
+    <!--FOOTER-->
+    <%- include("../shared/partials/fixed_footer") %>
+    <!--FOOTER-->
+</body>
+</html>

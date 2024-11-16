@@ -1,0 +1,143 @@
+<!-- Desktopový navbar -->
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container header_desktop">
+    <div class="row w-100 align-items-center d-flex justify-content-end"> <!-- Vytvorenie riadku pre všetky prvky -->
+
+      <% if (!locals.isAuth) { %>
+          <div class="col-md-2 text-center">
+              <a href="/uvod" style="text-decoration: none;">
+                  <img src="/obrazky/logo9.png" alt="Logo" width="90" class="text-center img-fluid">
+              </a>
+          </div>
+          <div class="col-md-2 text-center">
+              <a href="/uvod" class="a_header">DOMOV</a>
+          </div>
+          <div class="col-md-2 text-center">
+              <a href="/o-webe" class="a_header">O WEBE</a>
+          </div>
+          <div class="col-md-2 text-center">
+              <a href="/kontakt" class="a_header">KONTAKT</a>
+          </div>
+          <div class="col-md-2 text-center">
+              <a href="/prihlasenie-ziak" class="buttton_nav">ŽIAK</a>
+          </div>
+          <div class="col-md-2 text-center">
+              <a href="/prihlasenie-ucitel" class="buttton_nav">UČITEĽ</a>
+          </div>
+
+      <% } else { %>
+        <% if (locals.user.isTeacher) { %>
+          <div class="col-md-3 text-center">
+            <a href="/ucitel/profil" class="profil_header">
+              <img src="/obrazky/teacher_profile.png" alt="" width="40" style="margin-right: 20px;">
+              <%= locals.user.name %> <%= locals.user.surname %>
+            </a>
+          </div>
+        <% } else { %>
+
+          <div class="col-md-2 text-center" style="margin-top: 20px;">
+            <a href="/ziak/profil" class="profil_header">
+              <img src="/obrazky/student_profile.png" alt="" width="40" style="margin-right: 20px;">
+              <%= locals.user.name %> <%= locals.user.surname %>
+            </a>
+          </div>
+        <% } %>
+          <div class="col-md-2 text-center" style="margin-top: 20px;">
+            <form action="/odhlasenie" method="POST">
+              <button type="submit" class="logout" style="text-decoration: underline;">Odhlásiť sa</button>
+            </form>
+          </div>
+      <% } %>
+    </div> 
+  </div>
+</nav> 
+<!------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+<!-- Mobilný navbar -->
+<nav class="navbar header_mobil_tablet">
+  <div class="container-fluid">
+    <% if (!locals.isAuth) { %>
+      <a href="/uvod">
+        <img src="/obrazky/logo9.png" alt="" width="80">
+      </a>
+    <% } else { %>
+      <% if (locals.user.isTeacher) { %>
+        <a href="/uvod">
+          <img src="/obrazky/logo9.png" alt="" width="80">
+        </a>
+      <% } else { %>
+        <a href="/ziak/domov">
+          <img src="/obrazky/logo9.png" alt="" width="80">
+        </a>
+      <% } %>
+    <% } %>
+    <button class="navbar-toggler ms-auto button_togler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+<div class="collapse" id="navbarToggle">
+  <div class="collapse_navbar">
+    <div class="container header_mobil_tablet">
+      <div class="row">
+        <% if (!locals.isAuth) { %>
+            <div class="col-md-2 text-center margin_nav_mobil">
+                <a href="/uvod" class="a_header">DOMOV</a>
+            </div>
+            <div class="col-md-2 text-center margin_nav_mobil">
+                <a href="/o-webe" class="a_header">O WEBE</a>
+            </div>
+            <div class="col-md-2 text-center margin_nav_mobil">
+                <a href="/kontakt" class="a_header">KONTAKT</a>
+            </div>
+            <div class="col-md-2 text-center">
+                <a href="/prihlasenie-ziak" class="buttton_nav">ŽIAK</a>
+            </div>
+            <div class="col-md-2 text-center">
+                <a href="/prihlasenie-ucitel" class="buttton_nav">UČITEĽ</a>
+            </div>
+        <% } else { %>
+          <% if (locals.user.isTeacher) { %>
+            <div class="col-md-3 text-center">
+              <a href="/ucitel/profil" class="profil_header">
+                <img src="/obrazky/teacher_profile.png" alt="" width="40" style="margin-right: 20px;">
+                <%= locals.user.name %> <%= locals.user.surname %>
+              </a>
+            </div>
+          <% } else { %>
+            <div class="col-md-2 text-center margin_nav_mobil">
+              <a href="/ziak/domov" class="a_header">DOMOV</a>
+            </div>
+            <div class="col-md-2 text-center margin_nav_mobil">
+                <a href="/o-webe" class="a_header">TESTY</a>
+            </div>
+            <div class="col-md-2 text-center margin_nav_mobil">
+                <a href="/kontakt" class="a_header">UČEBNÉ MATERIÁLY</a>
+            </div>
+            <div class="col-md-2 text-center">
+                <a href="/prihlasenie-ziak" class="a_header">KONTAKT</a>
+            </div>
+            <div class="col-md-2 text-center" style="margin-top: 20px;">
+              <a href="/ziak/profil" class="profil_header">
+                <img src="/obrazky/student_profile.png" alt="" width="40" style="margin-right: 20px;">
+                <%= locals.user.name %> <%= locals.user.surname %>
+              </a>
+            </div>
+          <% } %>
+            <div class="col-md-2 text-center" style="margin-top: 20px;">
+              <form action="/odhlasenie" method="POST">
+                <button type="submit" class="logout" style="text-decoration: underline;">Odhlásiť sa</button>
+              </form>
+            </div>
+        <% } %>
+      </div> 
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>

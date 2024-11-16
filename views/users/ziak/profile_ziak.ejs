@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" class="html_body_ziak">
+<head>
+    <%- include("../../shared/partials/head") %>
+    <link rel="stylesheet" href="/css/style-ziak.css">
+    <title>Profil</title>
+</head>
+<body class="html_body_ziak">
+    
+    <!--BODY-->
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+    
+            <!-- Sidebar -->
+            <%- include("../../shared/partials/sidebar_ziak") %>
+    
+            <div class="col">
+
+                <!--Header-->
+                <%- include("../../shared/partials/header") %>
+    
+                <!-- Hlavný obsah -->
+                <div style="padding: 20px;">
+                    <div class="row">
+
+                        <!--prva polovica-->
+                        <div class="col-md-6 p-0">
+                            <div class="container container_odsadenie">
+                                <div class="row justify-content-center d-flex">
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                                        <h1 class="nadpis_profil text-center">ŽIAK</h1>
+                                        <img src="/obrazky/student_profile.png" alt="" width="100%" class="img-fluid img_profil">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!--druha polovica-->
+                        <div class="col-md-6 p-0">
+                            <div class="container container_odsadenie" style="margin-bottom: 100px;">
+                                <div class="row">
+                                    <div class="col-md-10 col-lg-10 col-xl-6">
+                                        <h1 class="nadpis_profil">Údaje o používateľovi:</h1>
+                                    </div>
+                                </div>
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-md-10 col-lg-10 col-xl-6 d-flex justify-content-between align-items-center border_">
+                                            <p class="profil_udaje">Meno: <span class="span_profil"><%= locals.user.name %></span></p>
+                                            <button type="submit" class="pen_img">
+                                                <img src="/obrazky/pen_icon.png" alt="" width="20" class="text-center img-fluid">
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10 col-lg-10 col-xl-6 d-flex justify-content-between align-items-center border_">
+                                            <p class="profil_udaje">Priezvisko: <span class="span_profil"><%= locals.user.surname %></span></p>
+                                            <button type="submit" class="pen_img">
+                                                <img src="/obrazky/pen_icon.png" alt="" width="20" class="text-center img-fluid">
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10 col-lg-10 col-xl-6 d-flex justify-content-between align-items-center border_">
+                                            <p class="profil_udaje">E-mail: <span class="span_profil"><%= locals.user.email %></span></p>
+                                            <button type="submit" class="pen_img">
+                                                <img src="/obrazky/pen_icon.png" alt="" width="20" class="text-center img-fluid">
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10 col-lg-10 col-xl-6 d-flex justify-content-between align-items-center border_">
+                                            <p class="profil_udaje">Heslo: </p>
+                                            <button type="button" class="button_heslo">Zmena hesla</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--BODY-->
+
+    <!--FOOTER-->
+
+    <!--FOOTER-->
+</body>
+</html>
