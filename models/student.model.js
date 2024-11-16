@@ -1,13 +1,12 @@
 const db = require("../data/database");
 
 class Student {
-    constructor(paId_homework, paId_user, paText_homework, paFile_path, paIsAllRight, paHomework_status) {
+    constructor(paId_homework, paId_user, paText_homework, paFile_path, paIsAllRight) {
         this.id_homework = paId_homework;
         this.id_user = paId_user;
         this.text_homework = paText_homework;
         this.file_path = paFile_path;
         this.isAllRight = paIsAllRight;
-        this.homework_status = paHomework_status;
     }
 
     static async getAllHomeworks() {
