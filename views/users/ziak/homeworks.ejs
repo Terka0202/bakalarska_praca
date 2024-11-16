@@ -38,8 +38,9 @@
                                       </tr>
                                     </thead>
                                     <tbody>
-                                        <% for(const H of homeworks) { %>
-                                            <%- include("../../shared/partials/student_items/homework-item", {H}) %>
+                                        <!--môžem mať dva rôzne cyklusy pre jednu šablónu, ale spoločnú premennú, ktorú vykreslujem v šablóne-->
+                                        <% for(const H of homeworks) { %>      
+                                            <%- include("../../shared/partials/student_items/homework-item", {newHomework: H}) %>
                                         <% } %>
                                     </tbody>
                                 </table>

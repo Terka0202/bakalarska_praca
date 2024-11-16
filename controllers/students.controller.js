@@ -17,8 +17,17 @@ const getIndexZiak = (req, res) => {
 
 const getHomeworks = async (req, res) => {
     try {
+        const submittedHomeworks = await Student.getAllSubmittedHomeworks();
         const homeworks = await Student.getAllHomeworks();
-        res.render("users/ziak/homeworks", {homeworks});
+
+        for (let i = 0; i < submittedHomeworks.length; i++) {
+            const submitted_homework = submittedHomeworks[i];
+            const deadline = new Date(submitted_homework.deadline); // Konvertuj textový dátum na objekt Date
+            const now = new Date(); // Získaj aktuálny dátum
+            homeworks.isDeadlinePassed = deadline < now; // Pridaj vlastnosť isDeadlinePassed
+        }
+
+        res.render("users/ziak/homeworks", {homeworks: homeworks, submittedHomeworks}); // ked mám dve rozne tabulky a chcem ich vykreslit v jednej sablone, určím si spoločnú premennú pre obe volané metody
     } catch (error) {
         console.error(error);
         return res.status(500).render("shared/500");

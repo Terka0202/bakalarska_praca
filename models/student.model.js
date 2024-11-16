@@ -1,18 +1,32 @@
 const db = require("../data/database");
 
 class Student {
-    constructor(paId_homework, paId_user, paText_homework, paFile_path, paIsAllRight) {
+    constructor(paId_homework, paId_user, paText_homework, paFile_path, paIsAllRight, paHomework_status) {
         this.id_homework = paId_homework;
         this.id_user = paId_user;
         this.text_homework = paText_homework;
         this.file_path = paFile_path;
         this.isAllRight = paIsAllRight;
+        this.homework_status = paHomework_status;
     }
 
     static async getAllHomeworks() {
         try {
             const query = `
                 SELECT * FROM homeworks;
+            `;
+            const[records] = await db.query(query);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+    static async getAllSubmittedHomeworks() {
+        try {
+            const query = `
+                SELECT * FROM submitted_homeworks;
             `;
             const[records] = await db.query(query);
             return records;
