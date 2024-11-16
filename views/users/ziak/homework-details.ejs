@@ -34,13 +34,13 @@
                    <form action="/ziak/domace-ulohy/<%= homework.id_homework %>" method="POST" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-8">
-                                <textarea id="text_homework" name="text_homework" rows="5" required class="form-control form_input" placeholder="Správa" style="margin-bottom: 30px;"></textarea>
+                                <textarea id="text_homework" name="text_homework" rows="5" class="form-control form_input" placeholder="Správa" style="margin-bottom: 30px;" required></textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8">
                                 <label for="file_path" class="margin_input_upload">PDF súbor:</label>
-                                <input type="file" id="file_path" name="file_path" accept="application/pdf" required class="form-control input_upload" style="margin-bottom: 50px;">
+                                <input type="file" id="file_path" name="file_path" accept="application/pdf" class="form-control input_upload" style="margin-bottom: 50px;" required>
                             </div>
                         </div>
                         <div class="row">

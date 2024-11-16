@@ -1,6 +1,4 @@
 const Student = require("../models/student.model");
-const multer  = require("multer");
-const upload = multer({ dest: "uploads/" });
 const fs = require('fs');
 
 /*PROFIL*/
@@ -42,7 +40,6 @@ const getHomeworkDetails = async (req, res) => {
 const insertHomework_ziak = async (req, res) => {
 
     const {text_homework} = req.body;
-    console.log("toto je body text:", req.body);
 
     try {
        
@@ -53,31 +50,25 @@ const insertHomework_ziak = async (req, res) => {
 
         let db_file_path = "";
 
-        upload.single("file_path")(req, res, async (err) => {
+        
+        // Ak bol súbor úspešne nahraný, nastavíme jeho cestu
+        // Ak nebol súbor úspešne nahraný, vypíše chybu
+        if (req.file) {
+            const destination = "./public/pdf_files/students_homeworks/";
+            const filename = req.file.originalname;
+            const filePath = destination + filename;
+            fs.renameSync(req.file.path, filePath);
+            db_file_path = "/pdf_files/students_homeworks/" + filename; 
+        } else {
+            return res.status(400).send("Chyba pri nahrávaní súboru. Súbor musí byť vo formáte PDF.");
+        }
 
-            // Ak nebolbol súbor úspešne nahraný, vypíše chybu
-            if (err) {
-                console.error("Chyba pri nahrávaní súboru:", err.message);
-                return res.status(400).send("Chyba pri nahrávaní súboru. Uistite sa, že súbor je vo formáte PDF.");
-            }
+        console.log("Cesta suboru", db_file_path);
 
-            console.log("Súbor nahraný:", req.file); // Skontroluj, či je súbor správne priradený
+        const newStudentHomework = new Student(id_homework, id_user, text_homework, db_file_path, isAllRight);
+        await newStudentHomework.insertHomeworkByZiak();
 
-            // Ak bol súbor úspešne nahraný, nastavíme jeho cestu
-            if (req.file) {
-                const destination = "./public/pdf_files/";
-                const filename = req.file.originalname;
-                const filePath = destination + filename;
-                fs.renameSync(req.file.path, filePath);
-                db_file_path = "/pdf_files/" + filename; 
-            }
-
-
-            const newStudentHomework = new Student(id_homework, id_user, text_homework, db_file_path, isAllRight);
-            await newStudentHomework.insertHomeworkByZiak();
-
-            res.redirect("/ziak/domace-ulohy");
-        });
+        res.redirect("/ziak/domace-ulohy");
 
     } catch (error) {
         console.error(error);

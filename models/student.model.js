@@ -1,10 +1,10 @@
 const db = require("../data/database");
 
 class Student {
-    constructor(paId_homework, paId_user, paText, paFile_path, paIsAllRight) {
+    constructor(paId_homework, paId_user, paText_homework, paFile_path, paIsAllRight) {
         this.id_homework = paId_homework;
         this.id_user = paId_user;
-        this.text = paText;
+        this.text_homework = paText_homework;
         this.file_path = paFile_path;
         this.isAllRight = paIsAllRight;
     }
@@ -41,8 +41,8 @@ class Student {
                 INSERT INTO submitted_homeworks (id_homework, id_user, text_homework, file_path, isAllRight)
                 VALUES (?)
             `;
-            
-            const [result] = await db.query(query, [[this.id_homework, this.id_user, this.text_homework.trim(), this.file_path.trim(), this.isAllRight]]);
+
+            const [result] = await db.query(query, [[this.id_homework, this.id_user, this.text_homework, this.file_path, this.isAllRight]]);
             return result;
         } catch (error) {
             console.error(error);
