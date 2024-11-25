@@ -22,11 +22,29 @@
                 <div style="padding: 20px;">
                     <div class="row justify-content-center d-flex">
                         <div class="col-md-10">
-                            <h1 style="margin-bottom: 50px; margin-top: 30px;">Domáce úlohy</h1>
+                            <h1 style="margin-bottom: 10px; margin-top: 30px;">Domáce úlohy</h1>
                         </div>
+                    </div>
+                    <div class="row justify-content-center d-flex">
+                        <div class="col-md-10">
+                            <div class="dropdown text-end" style="margin-bottom: 40px;">
+                                <a class="btn btn-secondary" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Filter úloh <i class="bi bi-filter"></i>
+                                </a>
+                              
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="dropdownMenu">
+                                    <li><a class="dropdown-item" id="1">Všetky</a></li>  
+                                    <li><a class="dropdown-item" id="2">Odovzdané</a></li>
+                                    <li><a class="dropdown-item" id="3">Neodovzdané</a></li>
+                                    <li><a class="dropdown-item" id="4">Odovzdané po termíne</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center d-flex">
                         <div class="col-md-10 text-center">
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-hover">
                                     <thead>
                                       <tr>
                                         <th scope="col">Názov</th>
@@ -38,10 +56,50 @@
                                       </tr>
                                     </thead>
                                     <tbody>
-                                        <!--môžem mať dva rôzne cyklusy pre jednu šablónu, ale spoločnú premennú, ktorú vykreslujem v šablóne-->
-                                        <% for(const H of homeworks) { %>      
-                                            <%- include("../../shared/partials/student_items/homework-item", {newHomework: H}) %>
+    
+                                        <% for(const H of homeworks) { %>            
+                                            <tr data-id_homework="<%= H.id_homework %>" data-status = "<%= H.isSubmitted %>">
+                                                <td><%= H.title_homework %></td>
+                                                <td>
+                                                    <%= new Date(H.dateTime).toLocaleString('sk-SK', { 
+                                                        day: '2-digit', // 2-digit naformatuje na 2-ciferne cislo
+                                                        month: '2-digit',
+                                                        year: 'numeric', // numeric zas da plný format roku napr. 2024
+                                                        hour: '2-digit', 
+                                                        minute: '2-digit' 
+                                                    }) %>
+                                                </td>
+                                                <td>
+                                                    <%= new Date(H.deadline).toLocaleString('sk-SK', { 
+                                                        day: '2-digit', 
+                                                        month: '2-digit', 
+                                                        year: 'numeric', 
+                                                        hour: '2-digit', 
+                                                        minute: '2-digit' 
+                                                    }) %>
+                                                </td>
+                                                <td>
+                                                    <a href="/ziak/domace-ulohy/<%= H.id_homework %>">
+                                                        <i class="fs-4 bi-box-arrow-in-up-right"></i>
+                                                    </a>
+                                                </td>
+                                                
+                                                <% if (SH_id_homeworks.includes(H.id_homework) && !H.DeadlinePassed) { %>
+                                                    <td style="color: rgb(37, 160, 37);">odovzdané</td>
+                                                <% } else if (H.DeadlinePassed) { %>
+                                                    <td style="color: rgb(233, 140, 0);">oneskorené odovzdanie</td>
+                                                <% } else { %>
+                                                    <td style="color: red;">neodovzdané</td>
+                                                <% } %>
+                                            
+                                                <% if (SH_hodnotenia.includes(1)) { %>
+                                                    <td><i class="fs-4 bi-check2" style="color: rgb(37, 160, 37);" ></i></td>
+                                                <% } else { %>
+                                                    <td><i class="fs-3 bi-x" style="color: red;"></i></td>
+                                                <% } %>
+                                            </tr>
                                         <% } %>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -54,6 +112,8 @@
     <!--BODY-->
 
     <!--SCRIPTY-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/javascript/homeworks.js" defer></script>
 
 </body>
 </html>

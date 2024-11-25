@@ -22,12 +22,12 @@ class Student {
         }
     }
 
-    static async getAllSubmittedHomeworks() {
+    static async getSubmittedHomeworksByIdUser(id_user) {
         try {
             const query = `
-                SELECT * FROM submitted_homeworks;
+                SELECT * FROM submitted_homeworks WHERE id_user = ?;
             `;
-            const[records] = await db.query(query);
+            const[records] = await db.query(query, [id_user]);
             return records;
         } catch (error) {
             console.error(error);

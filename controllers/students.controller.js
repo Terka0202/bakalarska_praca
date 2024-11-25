@@ -17,17 +17,35 @@ const getIndexZiak = (req, res) => {
 
 const getHomeworks = async (req, res) => {
     try {
-        const submittedHomeworks = await Student.getAllSubmittedHomeworks();
+        const id_user = res.locals.user.id;
+        const submittedHomeworks = await Student.getSubmittedHomeworksByIdUser(id_user);
         const homeworks = await Student.getAllHomeworks();
 
-        for (let i = 0; i < submittedHomeworks.length; i++) {
-            const submitted_homework = submittedHomeworks[i];
-            const deadline = new Date(submitted_homework.deadline); // Konvertuj textový dátum na objekt Date
-            const now = new Date(); // Získaj aktuálny dátum
-            homeworks.isDeadlinePassed = deadline < now; // Pridaj vlastnosť isDeadlinePassed
+        for (let i = 0; i < homeworks.length; i++) {
+            const homework = homeworks[i];
+            const deadline = new Date(homework.deadline); // Konvertovany textovy datum na format DATE
+            const now = new Date(); // aktuálny dátum       
+            homework.DeadlinePassed = deadline < now; // pridam do homeworks kazdemu objektu novy stlpec boolean DeadlinePassed 
+
+            // SOME hľadá v poli objektov submittedHomeworks, či existuje aspoň jeden prvok s danou podmienkou, ak ano, tak vracia TRUE a ukonči prehladavanie, ak nenajde, vrati FALSE
+            const exists_id = submittedHomeworks.some(sub_homework => sub_homework.id_homework === homework.id_homework);
+            
+            if (exists_id && deadline > now) {
+                homework.isSubmitted = "odovzdane";
+            } else if (deadline < now) {
+                homework.isSubmitted = "oneskorene odovzdanie";
+            } else if (!exists_id) {
+                homework.isSubmitted = "neodovzdane";
+            }
         }
 
-        res.render("users/ziak/homeworks", {homeworks: homeworks, submittedHomeworks}); // ked mám dve rozne tabulky a chcem ich vykreslit v jednej sablone, určím si spoločnú premennú pre obe volané metody
+        const SH_id_homeworks = submittedHomeworks.map(function(sub_homework) {  // MAP prehľadáva celú tabuľku (pole objektov) a vytvorí nové pole obsahujúce len hodnoty id_homework => napr. [1,2,3]
+            return sub_homework.id_homework;
+        });
+
+        const SH_hodnotenia = submittedHomeworks.map(hodnotenie => hodnotenie.isAllRight); // map pomocou arrow function
+
+        res.render("users/ziak/homeworks", {homeworks, SH_id_homeworks, SH_hodnotenia});
     } catch (error) {
         console.error(error);
         return res.status(500).render("shared/500");
@@ -85,6 +103,9 @@ const insertHomework_ziak = async (req, res) => {
     }
 }
 
+const getChallenges = (req, res) => {
+    res.render("users/ziak/challenges");
+}
 
 module.exports = {
     getProfilZiak,
@@ -92,5 +113,6 @@ module.exports = {
     getIndexZiak,
     getHomeworks,
     getHomeworkDetails,
-    insertHomework_ziak
+    insertHomework_ziak,
+    getChallenges
 };
