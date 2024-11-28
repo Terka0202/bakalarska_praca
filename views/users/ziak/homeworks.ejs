@@ -86,7 +86,7 @@
                                                 
                                                 <% if (SH_id_homeworks.includes(H.id_homework) && !H.DeadlinePassed) { %>
                                                     <td style="color: rgb(37, 160, 37);">odovzdané</td>
-                                                <% } else if (H.DeadlinePassed) { %>
+                                                <% } else if (H.DeadlinePassed && SH_id_homeworks.includes(H.id_homework)) { %>
                                                     <td style="color: rgb(233, 140, 0);">oneskorené odovzdanie</td>
                                                 <% } else { %>
                                                     <td style="color: red;">neodovzdané</td>
