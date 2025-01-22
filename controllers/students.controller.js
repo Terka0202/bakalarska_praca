@@ -32,7 +32,7 @@ const getHomeworks = async (req, res) => {
             
             if (exists_id && deadline > now) {
                 homework.isSubmitted = "odovzdane";
-            } else if (deadline < now) {
+            } else if (deadline < now && exists_id) {
                 homework.isSubmitted = "oneskorene odovzdanie";
             } else if (!exists_id) {
                 homework.isSubmitted = "neodovzdane";
@@ -90,9 +90,7 @@ const insertHomework_ziak = async (req, res) => {
             return res.status(400).send("Chyba pri nahrávaní súboru. Súbor musí byť vo formáte PDF.");
         }
 
-        console.log("Cesta suboru", db_file_path);
-
-        const newStudentHomework = new Student(id_homework, id_user, text_homework, db_file_path, isAllRight);
+        const newStudentHomework = new Student({type: "homework", id_homework, id_user, text_homework, db_file_path, isAllRight});
         await newStudentHomework.insertHomeworkByZiak();
 
         res.redirect("/ziak/domace-ulohy");
@@ -103,8 +101,146 @@ const insertHomework_ziak = async (req, res) => {
     }
 }
 
-const getChallenges = (req, res) => {
-    res.render("users/ziak/challenges");
+const getChallenges = async (req, res) => {
+    try {
+        const id_user = res.locals.user.id;
+        const submittedChallenges = await Student.getSubmittedChallengesByIdUser(id_user);
+        const challenges = await Student.getAllChallenges();
+
+        for (let i = 0; i < challenges.length; i++) {
+            const challenge = challenges[i];
+            const deadline = new Date(challenge.deadline);
+            const now = new Date(); 
+            challenge.DeadlinePassed = deadline < now; 
+
+            const exists_id = submittedChallenges.some(sub_challenge => sub_challenge.id_challenge === challenge.id_challenge);
+            
+            if (exists_id && deadline > now) {
+                challenge.isSubmitted = "odovzdane";
+            } else if (deadline < now && exists_id) {
+                challenge.isSubmitted = "oneskorene odovzdanie";
+            } else if (!exists_id) {
+                challenge.isSubmitted = "neodovzdane";
+            }
+        }
+
+        const SCH_id_challenges = submittedChallenges.map(function(sub_challenge) {
+            return sub_challenge.id_challenge;
+        });
+
+        const SCH_hodnotenia = submittedChallenges.map(hodnotenie => hodnotenie.isAllRight);
+
+        res.render("users/ziak/challenges", {challenges, SCH_id_challenges, SCH_hodnotenia});
+    } catch (error) {
+        console.error(error);
+        return res.status(500).render("shared/500");
+    }
+}
+
+const getChallengeDetails = async (req, res) => {
+    try {
+        const id_challenge = req.params.id;
+        const challenges = await Student.getChallenge_details(id_challenge);
+        const challenge = challenges[0];
+        res.render("users/ziak/challenge-details", {challenge});
+    } catch (error) {
+        console.error(error);
+        return res.status(500).render("shared/500");
+    }
+}
+
+const insertChallenge_ziak = async (req, res) => {
+
+    const {text_challenge} = req.body;
+
+    try {
+       
+        let id_challenge = req.params.id; 
+        let id_user = res.locals.user.id;
+
+        let isCorrect = false; 
+
+        let db_file_path = "";
+
+        
+        if (req.file) {
+            const destination = "./public/pdf_files/students_challenges/";
+            const filename = req.file.originalname;
+            const filePath = destination + filename;
+            fs.renameSync(req.file.path, filePath);
+            db_file_path = "/pdf_files/students_challenges/" + filename; 
+        } else {
+            return res.status(400).send("Chyba pri nahrávaní súboru. Súbor musí byť vo formáte PDF.");
+        }
+
+        const newStudentChallenge = new Student({type: "challenge", id_challenge, id_user, text_challenge,  db_file_path, isCorrect});
+        await newStudentChallenge.insertChallengeByZiak();
+
+        res.redirect("/ziak/tyzdenne-vyzvy");
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).render("shared/500");
+    }
+}
+
+const getExcursions = async (req, res) => {
+    try {
+        const excursions = await Student.getAllExcursions();
+
+        res.render("users/ziak/excursions", {excursions});
+    } catch (error) {
+        console.error(error);
+        return res.status(500).render("shared/500");
+    }
+}
+
+const getExcursionDetails = async (req, res) => {
+    try {
+        const id_excursion = req.params.id;
+        const excursions = await Student.getExcursion_details(id_excursion);
+        const excursion = excursions[0];
+        res.render("users/ziak/excursion-details", {excursion});
+    } catch (error) {
+        console.error(error);
+        return res.status(500).render("shared/500");
+    }
+}
+
+const getQuizzes = async (req, res) => {
+    res.render("users/ziak/quizzes");
+}
+
+const getTeachingMaterials_category = async (req, res) => {
+    try {
+        const categories = await Student.getTeaching_materials_category();
+
+        res.render("users/ziak/teaching_materials", {categories});
+    } catch (error) {
+        console.error(error);
+        return res.status(500).render("shared/500");
+    }
+}
+
+const getTeachingMaterials = async (req, res) => {
+    try {
+        const id_category = req.params.id;
+        const materials = await Student.getTeaching_materials(id_category);
+        const categories = await Student.getTeaching_materials_category();
+
+        let category_title = "";
+
+        for (let i = 0; i < categories.length; i++) {
+            if (id_category == categories[i].id_category) {
+                category_title = categories[i].title_category;
+            }
+        }
+
+        res.render("users/ziak/teaching_materials-details", {materials, category_title});
+    } catch (error) {
+        console.error(error);
+        return res.status(500).render("shared/500");
+    }
 }
 
 module.exports = {
@@ -114,5 +250,12 @@ module.exports = {
     getHomeworks,
     getHomeworkDetails,
     insertHomework_ziak,
-    getChallenges
+    getChallenges,
+    getChallengeDetails,
+    insertChallenge_ziak,
+    getExcursions,
+    getExcursionDetails,
+    getQuizzes,
+    getTeachingMaterials_category,
+    getTeachingMaterials
 };

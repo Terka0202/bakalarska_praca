@@ -1,12 +1,20 @@
 const db = require("../data/database");
 
 class Student {
-    constructor(paId_homework, paId_user, paText_homework, paFile_path, paIsAllRight) {
-        this.id_homework = paId_homework;
-        this.id_user = paId_user;
-        this.text_homework = paText_homework;
-        this.file_path = paFile_path;
-        this.isAllRight = paIsAllRight;
+    constructor(data) {
+        if (data.type === "homework") {
+            this.id_homework = data.id_homework;
+            this.id_user = data.id_user;
+            this.text_homework = data.text_homework;
+            this.file_path = data.file_path;
+            this.isAllRight = data.isAllRight;
+        } else if (data.type === "challenge") {
+            this.id_challenge = data.id_challenge;
+            this.id_user = data.id_user;
+            this.text_challenge = data.text_challenge;
+            this.file_path_challenge = data.file_path_challenge;
+            this.isCorrect = data.isCorrect;
+        }
     }
 
     static async getAllHomeworks() {
@@ -35,6 +43,7 @@ class Student {
         }
     }
 
+   
     static async getHomework_details(id_homework) {
         try {
             const query = `
@@ -62,6 +71,115 @@ class Student {
             return res.status(500).render("shared/500");
         }
     }
+
+    static async getAllChallenges() {
+        try {
+            const query = `
+                SELECT * FROM weekly_challenges;
+            `;
+            const[records] = await db.query(query);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+    static async getSubmittedChallengesByIdUser(id_user) {
+        try {
+            const query = `
+                SELECT * FROM submitted_challenges WHERE id_user = ?;
+            `;
+            const[records] = await db.query(query, [id_user]);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+    static async getChallenge_details(id_challenge) {
+        try {
+            const query = `
+                SELECT * FROM weekly_challenges WHERE id_challenge = ?;
+            `;
+            const[records] = await db.query(query, [id_challenge]);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+    async insertChallengeByZiak() {
+        try {
+            const query = `
+                INSERT INTO submitted_challenges (id_challenge, id_user, text_challenge, file_path_challenge, isCorrect)
+                VALUES (?)
+            `;
+
+            console.log('skuskam id', this.id_challenge);
+
+            const [result] = await db.query(query, [[this.id_challenge, this.id_user, this.text_challenge, this.file_path_challenge, this.isCorrect]]);
+            return result;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+    static async getAllExcursions() {
+        try {
+            const query = `
+                SELECT * FROM excursions;
+            `;
+            const[records] = await db.query(query);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+    static async getExcursion_details(id_excursion) {
+        try {
+            const query = `
+                SELECT * FROM excursions WHERE id_excursion = ?;
+            `;
+            const[records] = await db.query(query, [id_excursion]);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+    static async getTeaching_materials_category() {
+        try {
+            const query = `
+                SELECT * FROM teaching_materials_category;
+            `;
+            const[records] = await db.query(query);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+    static async getTeaching_materials(id_category) {
+        try {
+            const query = `
+                SELECT * FROM teaching_materials WHERE id_category = ?;
+            `;
+            const[records] = await db.query(query, [id_category]);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
 }
 
 module.exports = Student;

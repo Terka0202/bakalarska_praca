@@ -22,21 +22,21 @@
                 <div style="padding: 20px;">
                     <div class="row justify-content-center d-flex">
                         <div class="col-md-10">
-                            <h1 style="margin-bottom: 10px; margin-top: 30px;">Domáce úlohy</h1>
+                            <h1 class="nadpis_domace_ulohy">Domáce úlohy</h1>
                         </div>
                     </div>
                     <div class="row justify-content-center d-flex">
                         <div class="col-md-10">
                             <div class="dropdown text-end" style="margin-bottom: 40px;">
-                                <a class="btn btn-secondary" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="btn btn-secondary" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="font-family: 'News Cycle', sans-serif;">
                                   Filter úloh <i class="bi bi-filter"></i>
                                 </a>
                               
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="dropdownMenu">
-                                    <li><a class="dropdown-item" id="1">Všetky</a></li>  
-                                    <li><a class="dropdown-item" id="2">Odovzdané</a></li>
-                                    <li><a class="dropdown-item" id="3">Neodovzdané</a></li>
-                                    <li><a class="dropdown-item" id="4">Odovzdané po termíne</a></li>
+                                    <li><a class="dropdown-item text_td" id="1">Všetky</a></li>  
+                                    <li><a class="dropdown-item text_td" id="2">Odovzdané</a></li>
+                                    <li><a class="dropdown-item text_td" id="3">Neodovzdané</a></li>
+                                    <li><a class="dropdown-item text_td" id="4">Odovzdané po termíne</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -47,20 +47,20 @@
                                 <table class="table table-hover">
                                     <thead>
                                       <tr>
-                                        <th scope="col">Názov</th>
-                                        <th scope="col">Dátum a čas zadania</th>
-                                        <th scope="col">Dátum a čas odovzdania</th>
-                                        <th scope="col">Otvoriť</th>
-                                        <th scope="col">Odovzdané</th>
-                                        <th scope="col">Vyhodnotenie</th>
+                                        <th scope="col" class="nadpis_col">Názov</th>
+                                        <th scope="col" class="nadpis_col">Dátum a čas zadania</th>
+                                        <th scope="col" class="nadpis_col">Dátum a čas odovzdania</th>
+                                        <th scope="col" class="nadpis_col">Otvoriť</th>
+                                        <th scope="col" class="nadpis_col">Stav</th>
+                                        <th scope="col" class="nadpis_col">Vyhodnotenie</th>
                                       </tr>
                                     </thead>
                                     <tbody>
     
                                         <% for(const H of homeworks) { %>            
                                             <tr data-id_homework="<%= H.id_homework %>" data-status = "<%= H.isSubmitted %>">
-                                                <td><%= H.title_homework %></td>
-                                                <td>
+                                                <td class="text_td"><%= H.title_homework %></td>
+                                                <td class="text_td">
                                                     <%= new Date(H.dateTime).toLocaleString('sk-SK', { 
                                                         day: '2-digit', // 2-digit naformatuje na 2-ciferne cislo
                                                         month: '2-digit',
@@ -69,7 +69,7 @@
                                                         minute: '2-digit' 
                                                     }) %>
                                                 </td>
-                                                <td>
+                                                <td class="text_td">
                                                     <%= new Date(H.deadline).toLocaleString('sk-SK', { 
                                                         day: '2-digit', 
                                                         month: '2-digit', 
@@ -79,17 +79,17 @@
                                                     }) %>
                                                 </td>
                                                 <td>
-                                                    <a href="/ziak/domace-ulohy/<%= H.id_homework %>">
+                                                    <a href="/ziak/domace-ulohy/<%= H.id_homework %>" class="odkaz_otvoriť">
                                                         <i class="fs-4 bi-box-arrow-in-up-right"></i>
                                                     </a>
                                                 </td>
                                                 
                                                 <% if (SH_id_homeworks.includes(H.id_homework) && !H.DeadlinePassed) { %>
-                                                    <td style="color: rgb(37, 160, 37);">odovzdané</td>
+                                                    <td style="color: rgb(37, 160, 37);" class="text_td">odovzdané</td>
                                                 <% } else if (H.DeadlinePassed && SH_id_homeworks.includes(H.id_homework)) { %>
-                                                    <td style="color: rgb(233, 140, 0);">oneskorené odovzdanie</td>
+                                                    <td style="color: rgb(233, 140, 0);" class="text_td">oneskorené odovzdanie</td>
                                                 <% } else { %>
-                                                    <td style="color: red;">neodovzdané</td>
+                                                    <td style="color: red;" class="text_td">neodovzdané</td>
                                                 <% } %>
                                             
                                                 <% if (SH_hodnotenia.includes(1)) { %>
@@ -113,7 +113,7 @@
 
     <!--SCRIPTY-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/javascript/homeworks.js" defer></script>
+    <script src="/javascript/homeworks_challenges.js" defer></script>
 
 </body>
 </html>

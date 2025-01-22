@@ -147,18 +147,23 @@
 /*----------------------------------------------------------------------------------------------------------------*/
 
 /*PROFIL*/
-.nadpis_profil {
-    color: #309645;
-    font-family: 'Amatic SC', sans-serif;
-    font-weight: bold;
+.div_shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+    margin-top: 100px;
+    height: 600px;
+    max-height: 600px;
 }
 
 .container_odsadenie {
-    margin-top: 180px;
+    margin-top: 100px;
 }
 
 .img_profil {
-    margin-bottom: 180px;
+    margin-bottom: 30px;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    object-fit: cover;
 }
 
 .pen_img {
@@ -178,13 +183,21 @@
 .span_profil {
     font-family: 'News Cycle', 'sans-serif';
     color: #102A4B;
-    font-weight: normal;
     font-size: 20px;
+    margin: 0 90px; /* Medzera medzi textom a čiarou */
+    text-align: left;
+    margin-left: 140px;
+}
+
+.line {
+    border-top: 1px solid #000; /* Tenká čierna čiara */
+    width: 100%;
+    margin-left: 130px;
 }
 
 .border_ {
     margin-top: 20px;
-    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 130px;
 }
 
 .button_heslo {
@@ -194,6 +207,24 @@
     color: #102A4B;
     padding: 5px 10px 5px 10px;
     font-family: 'News Cycle', sans-serif;
+    margin-left: 130px;
+}
+
+.nadpis_profil {
+    color: #309645;
+    font-family: 'Amatic SC', sans-serif;
+    font-weight: bold;
+    font-size: 130px;
+    top: -90px; 
+    left: 10px; 
+    z-index: 10;
+    margin-left: 130px;
+}
+
+.meno_priezvisko {
+    font-family: 'News Cycle', sans-serif;
+    font-weight: 200;
+    color: #309645;
 }
 /*PROFIL*/
 /*----------------------------------------------------------------------------------------------------------------*/
@@ -221,15 +252,181 @@
     background-color: rgb(240, 240, 240);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
 }
+
+.nadpis_domace_ulohy {
+    font-family: "Amatic SC", sans-serif;
+    color: #102A4B;
+    margin-bottom: 50px; 
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 60px;
+}
+
 /*DOMACE ULOHY*/
 /*----------------------------------------------------------------------------------------------------------------*/
 
+/*TYZDENNE VYZVY*/
+.nadpis_tyzdenne_vyzvy {
+    font-family: "Amatic SC", sans-serif;
+    color: #102A4B;
+    margin-bottom: 50px; 
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.nadpis_col {
+    font-family: 'Antonio', sans-serif;
+    color: #102A4B;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.text_td {
+    font-family: 'News Cycle', sans-serif;
+}
+
+.odkaz_otvoriť {
+    color: #309645;
+}
+
+.odkaz_otvoriť:hover {
+    color: #309645;
+}
+
+/*TYZDENNE VYZVY*/
+/*----------------------------------------------------------------------------------------------------------------*/
+
+/*EXKURZIE*/
+.nadpis_exkurzie {
+    font-family: "Amatic SC", sans-serif;
+    color: #102A4B;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.vonkajsi_div {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08); 
+    border-radius: 20px;
+    margin: 20px 20px 0px 20px;
+}
+
+.text_pod_nadpisom {
+    font-family: 'News Cycle', sans-serif;
+    color: #081629;
+    margin: 0px;
+    font-size: 18px;
+}
+
+.podnadpis_exkurzie {
+    text-align: center;
+    font-family: 'Antonio', sans-serif;
+    color: #102A4B;
+    margin-top: 30px;
+}
+
+.text_exkurzie {
+    color: black;
+    font-family: 'News Cycle', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.img_exkurzie {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.vnorene_div {
+    width: 100%;
+    height: auto;
+}
+
+.button_exkurzie {
+    text-align: center;
+    font-family: 'Amatic SC', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: white;
+    color: #102A4B;
+    border: solid 2px #102A4B;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.datum {
+    font-family: 'Antonio', sans-serif;
+    font-weight: 600;
+    color: #102A4B;
+    margin-right: 90px;
+    font-size: 20px;
+}
+
+.sipky {
+    font-family: 'Antonio', sans-serif;
+    color: #309645;
+    margin-top: 10px;
+    background-color: white;
+    border: none;
+}
+
+.img_pozadie {
+    width: 100%; /* Nastav podľa potreby */
+    height: auto; /* Zachovaj pomer strán */
+    mask-image: linear-gradient(transparent, black 20%, black 70%, transparent),
+                linear-gradient(90deg, transparent, black 20%, black 80%, transparent);
+    -webkit-mask-image: linear-gradient(transparent, black 20%, black 80%, transparent),
+                        linear-gradient(90deg, transparent, black 20%, black 80%, transparent);
+    mask-composite: intersect;
+    -webkit-mask-composite: destination-in;
+}
 
 
+/*EXKURZIE*/
+/*----------------------------------------------------------------------------------------------------------------*/
 
+/*UCEBNE MATERIALY*/
+.div_obrazok {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
+.text_obrazok {
+    color: #102A4B;
+    font-family: 'Amatic SC', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
 
+.col_nazvy {
+    font-family: 'Antonio', sans-serif;
+    color: #102A4B;
+    font-weight: 500;
+    font-size: 18px;
+}
 
+.td_nazvy {
+    font-family: 'News Cycle', sans-serif;
+}
+
+.download {
+    color: #309645;
+}
+
+.download:hover {
+    color: #309645;
+}
+/*UCEBNE MATERIALY*/
+/*----------------------------------------------------------------------------------------------------------------*/
 
 
 
@@ -255,6 +452,33 @@
     .container_odsadenie {
         margin-top: 100px;
     }
+
+    .nadpis_profil {
+        margin-left: 30px;
+        font-size: 80px;   
+        top: -50px; 
+    }
+
+    .span_profil {
+        margin-left: 10px;
+    }
+
+    .line {
+        margin-left: 0px;
+    }
+
+    .border_ {
+        margin-left: 0px;
+    }
+
+    .button_heslo {
+        margin-left: 0px;
+    }
+
+    .meno_priezvisko {
+        margin-bottom: 100px;
+    }
+    
     
     
     /*index*/
@@ -280,6 +504,16 @@
     
     .current_year {
         font-size: 6vw;
+    }
+
+    /*tyzdenne vyzvy*/
+    .nadpis_tyzdenne_vyzvy {
+        text-align: center;
+    }
+
+    /*exkurzie*/
+    .datum {
+        margin-right: 60px;
     }
     
 }
@@ -337,15 +571,117 @@
         font-size: 45px;
     }
 
+    /*profil ziaka*/
+
+    .nadpis_profil {
+        margin-left: 30px;
+        font-size: 70px;   
+        top: -50px; 
+    }
+
+    .span_profil {
+        margin-left: 10px;
+    }
+
+    .line {
+        margin-left: 0px;
+    }
+
+    .border_ {
+        margin-left: 0px;
+    }
+
+    .button_heslo {
+        margin-left: 0px;
+    }
+
+    .meno_priezvisko {
+        margin-bottom: 100px;
+    }
+
+    /*exkurzie*/
+
+    .list_style_background {
+        background-color: rgb(230, 230, 230) !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .list_style_background_2 {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+        display: inline-block;
+        padding: 15px 250px; 
+        width: auto;
+    }
+    
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1025px) and (max-width: 1700px) {
 
     /*sidebar*/
     .bg_sidebar {
         margin: 20px;
         border-radius: 15px;
         height: calc(100vh - 40px);
+    }
+
+    /*profil ziaka*/
+
+    .nadpis_profil {
+        margin-left: 80px;
+        font-size: 90px;   
+        top: -60px; 
+    }
+
+    .span_profil {
+        margin-left: 90px;
+    }
+
+    .line {
+        margin-left: 80px;
+    }
+
+    .border_ {
+        margin-left: 80px;
+    }
+
+    .button_heslo {
+        margin-left: 80px;
+    }
+}
+
+@media (min-width: 1700px) {
+
+    /*sidebar*/
+    .bg_sidebar {
+        margin: 20px;
+        border-radius: 15px;
+        height: calc(100vh - 40px);
+    }
+
+     /*profil ziaka*/
+
+    .nadpis_profil {
+        margin-left: 130px;
+        font-size: 130px;   
+        top: -90px; 
+    }
+
+    .span_profil {
+        margin-left: 140px;
+    }
+
+    .line {
+        margin-left: 130px;
+    }
+
+    .border_ {
+        margin-left: 130px;
+    }
+
+    .button_heslo {
+        margin-left: 130px;
     }
 }
 
