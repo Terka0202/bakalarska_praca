@@ -86,11 +86,12 @@ const insertHomework_ziak = async (req, res) => {
             const filePath = destination + filename;
             fs.renameSync(req.file.path, filePath);
             db_file_path = "/pdf_files/students_homeworks/" + filename; 
+            console.log("Cesta k uloženému súboru:", db_file_path);
         } else {
             return res.status(400).send("Chyba pri nahrávaní súboru. Súbor musí byť vo formáte PDF.");
         }
 
-        const newStudentHomework = new Student({type: "homework", id_homework, id_user, text_homework, db_file_path, isAllRight});
+        const newStudentHomework = new Student({type: "homework", id_homework, id_user, text_homework, file_path: db_file_path, isAllRight});
         await newStudentHomework.insertHomeworkByZiak();
 
         res.redirect("/ziak/domace-ulohy");
@@ -173,7 +174,7 @@ const insertChallenge_ziak = async (req, res) => {
             return res.status(400).send("Chyba pri nahrávaní súboru. Súbor musí byť vo formáte PDF.");
         }
 
-        const newStudentChallenge = new Student({type: "challenge", id_challenge, id_user, text_challenge,  db_file_path, isCorrect});
+        const newStudentChallenge = new Student({type: "challenge", id_challenge, id_user, text_challenge, file_path_challenge: db_file_path, isCorrect});
         await newStudentChallenge.insertChallengeByZiak();
 
         res.redirect("/ziak/tyzdenne-vyzvy");
