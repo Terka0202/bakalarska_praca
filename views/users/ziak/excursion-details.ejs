@@ -21,16 +21,18 @@
                 <!-- Hlavný obsah -->
                 <div style="padding: 20px;">
                     <div class="row justify-content-center d-flex">
-                        <div class="col-md-10">
+
+                         <!--Prva polovica-->
+                        <div class="col-md-5">
                             <div class="row">
-                                <div class="col-md-10">
+                                <div class="col-md-12">
                                     <h1 class="nadpis_exkurzie"><%= excursion.title_excursion %></h1>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 20px;">
-                                <div class="col-md-3">
-                                    <span>
-                                        Kedy: <%= new Date(excursion.date_excursion).toLocaleString('sk-SK', { 
+                                <div class="col-md-10">
+                                    <span class="text_detail">
+                                        <b>Kedy:</b> <%= new Date(excursion.date_excursion).toLocaleString('sk-SK', { 
                                         day: '2-digit', 
                                         month: '2-digit', 
                                         year: 'numeric' 
@@ -39,14 +41,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3">
-                                    <span>Cena: <%= excursion.price %> €</span>
+                                <div class="col-md-10">
+                                    <span class="text_detail"><b>Cena:</b> <%= excursion.price %> €</span>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-5">
-                                    <span>
-                                        Dokedy je potrebné sa prihlásiť:
+                                <div class="col-md-10">
+                                    <span class="text_detail">
+                                        <b>Dokedy je potrebné sa prihlásiť:</b>
                                         <%= new Date(excursion.log_in_date).toLocaleString('sk-SK', { 
                                         day: '2-digit', 
                                         month: '2-digit', 
@@ -56,25 +58,66 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3">
-                                    <span>Maximálny počet študentov: <%= excursion.max_number_of_students %></span>
+                                <div class="col-md-10">
+                                    <span class="text_detail"><b>Max. počet študentov:</b> <%= excursion.max_number_of_students %></span>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 20px;">
                                 <div class="col-md-10">
-                                    <h4>Popis exkurzie: </h4>
+                                    <h4 class="nadpis_detail">Popis exkurzie: </h4>
                                     <p class="text_pod_nadpisom">
                                         <%= excursion.description_excursion%>
                                     </p>
                                 </div>
                             </div>
+                            <form action="">
+                                <div class="row" style="margin-top: 20px;">
+                                    <div class="col-md-5 col-9">
+                                        <button type="submit" class="button_prihlasit_exkurzia">Prihlásiť sa</button>
+                                    </div>
+                                
+                                    <div class="col-md-5 col-3 justify-content-start d-flex" style="padding-left: 0px;">
+                                        <a href="/ziak/exkurzie">
+                                            <button type="button" class="button_spat" style="padding-left: 20px; padding-right: 20px;">Späť</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
 
-                            <div class="row" style="margin-top: 20px;">
-                                <div class="col-md-3">
-                                    <button>Prihlásiť sa</button>
+                        <!--Druha polovica-->
+                        <div class="col-md-5">
+                            <div class="row justify-content-center d-flex" style="margin-top: 20px;">
+                                <div class="col-md-10">
+                                    <h4 class="nadpis_detail">Obrázky: </h4>
+                                    <% if (excursion.img_path_detail === null) { %>
+                                        <p class="text_pod_nadpisom">
+                                            Žiadne obrázky
+                                        </p>
+                                    <% } else { %>
+                                        <img src="<%= excursion.img_path_detail%>" alt="" class="img-fluid img_detail">
+                                    <% } %>
+                                    
                                 </div>
                             </div>
-                            
+                            <div class="row justify-content-center d-flex" style="margin-top: 20px;">
+                                <div class="col-md-10">
+                                    <h4 class="nadpis_detail">Súbory: </h4>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center d-flex">
+                                <div class="col-md-10">
+                                    <% if (excursion.file_path === null) { %>
+                                        <p class="text_pod_nadpisom">
+                                            Žiadne súbory
+                                        </p>
+                                    <% } else { %>
+                                        <a href="<%= excursion.file_path %>" class="download" download>
+                                            <i class="fs-1 bi-filetype-pdf" style="color: #102A4B;"></i><br>
+                                        </a>
+                                    <% } %>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

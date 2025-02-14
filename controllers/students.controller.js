@@ -208,10 +208,6 @@ const getExcursionDetails = async (req, res) => {
     }
 }
 
-const getQuizzes = async (req, res) => {
-    res.render("users/ziak/quizzes");
-}
-
 const getTeachingMaterials_category = async (req, res) => {
     try {
         const categories = await Student.getTeaching_materials_category();
@@ -244,6 +240,29 @@ const getTeachingMaterials = async (req, res) => {
     }
 }
 
+const getQuizzes = async (req, res) => {
+    try {
+        const quizzes = await Student.getAllQuizzes();
+        res.render("users/ziak/quizzes", {quizzes});
+    } catch (error) {
+        console.error(error);
+        return res.status(500).render("shared/500");
+    }
+}
+
+const getQuizzesDetails = async (req, res) => {
+    try {
+        const id_quiz = req.params.id;
+        const quizzes = await Student.getQuizzesById(id_quiz);
+        const quiz = quizzes[0];
+
+        res.render("users/ziak/quizzes-details", {quiz});
+    } catch (error) {
+        console.error(error);
+        return res.status(500).render("shared/500");
+    }
+}
+
 module.exports = {
     getProfilZiak,
     getProfilUcitel,
@@ -257,6 +276,7 @@ module.exports = {
     getExcursions,
     getExcursionDetails,
     getQuizzes,
+    getQuizzesDetails,
     getTeachingMaterials_category,
     getTeachingMaterials
 };

@@ -15,6 +15,7 @@ const {
     getExcursions,
     getExcursionDetails,
     getQuizzes,
+    getQuizzesDetails,
     getTeachingMaterials_category,
     getTeachingMaterials
 } = require("../controllers/students.controller");
@@ -37,6 +38,7 @@ router.get("/ziak/exkurzie", getExcursions);
 router.get("/ziak/exkurzie/:id", getExcursionDetails);
 
 router.get("/ziak/kvizy", getQuizzes);
+router.get("/ziak/kvizy/:id", getQuizzesDetails);
 
 router.get("/ziak/ucebne-materialy", getTeachingMaterials_category);
 router.get("/ziak/ucebne-materialy/:id", getTeachingMaterials);

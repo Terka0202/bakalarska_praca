@@ -239,7 +239,9 @@
     color: #102A4B;
     font-size: 25px;
     margin-bottom: 50px;
+    font-weight: bold;
     background-color: #ffcd0b;
+    margin-top: 20px;
 }
 /*KONTAKT*/
 /*----------------------------------------------------------------------------------------------------------------*/
@@ -322,6 +324,7 @@
     color: #081629;
     margin: 0px;
     font-size: 18px;
+    text-align: justify;
 }
 
 .podnadpis_exkurzie {
@@ -393,6 +396,53 @@
     -webkit-mask-composite: destination-in;
 }
 
+.text_detail {
+    color: #102A4B;
+    font-family: 'News Cycle', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.nadpis_detail {
+    font-family: "Amatic SC", sans-serif;
+    color: #309645;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.img_detail {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+}
+
+.button_prihlasit_exkurzia {
+    width: 100%;
+    border-radius: 5px;
+    line-height: 1.5;
+    border: none;
+    font-weight: bold;
+    font-family: "Amatic SC", sans-serif;
+    color: #102A4B;
+    font-size: 25px;
+    margin-top: 20px;
+    background-color: #ffcd0b;
+}
+
+.button_spat {
+    width: 100%;
+    border-radius: 5px;
+    line-height: 1.5;
+    border: none;
+    font-weight: bold;
+    font-family: "Amatic SC", sans-serif;
+    color: #102A4B;
+    font-size: 25px;
+    margin-top: 20px;
+    background-color: #dddddd;
+}
 
 /*EXKURZIE*/
 /*----------------------------------------------------------------------------------------------------------------*/
@@ -433,6 +483,16 @@
 /*UCEBNE MATERIALY*/
 /*----------------------------------------------------------------------------------------------------------------*/
 
+/*KVIZY*/
+iframe {
+    margin-top: 20px;
+    width: 100% !important;
+    height: 70vh !important;
+    border: none;
+}
+
+/*KVIZY*/
+/*----------------------------------------------------------------------------------------------------------------*/
 
 
 /*MEDIA - MOBILY, TABLETY, PC*/

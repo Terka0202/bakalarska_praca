@@ -25,6 +25,34 @@
                             <h1 class="nadpis_exkurzie">Myslíš, že vieš všetko? Dokáž to!</h1>
                         </div>
                         <div class="col-md-10">
+                            <div class="row justify-content-start d-flex" style="margin-top: 50px;">
+                                <div class="col-md-8 position-relative text-center">
+                                    <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col" class="col_nazvy">Názov kvízu</th>
+                                            <th scope="col" class="col_nazvy">Dátum pridania</th>
+                                            <th scope="col" class="col_nazvy">Otvoriť</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for (Q of quizzes) { %>
+                                                <tr>
+                                                    <td class="td_nazvy"><%= Q.title_quiz %></td>
+                                                    <td class="td_nazvy"><%= new Date(Q.current_date).toLocaleString('sk-SK', { 
+                                                        day: '2-digit',
+                                                        month: '2-digit',
+                                                        year: 'numeric'
+                                                        }) %></td>
+                                                    <td><a href="/ziak/kvizy/<%= Q.id_quiz %>"><i class="fs-4 bi-box-arrow-in-up-right"></a></td>
+                                                </tr>
+                                            <% } %>
+                                        </tbody>
+                                      </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="col-md-10">
                             <div class="row justify-content-center d-flex">
                                 <div class="col-md-4">
                                     <iframe style="max-width:100%" src="https://wordwall.net/embed/4b2bd3d7925d43b88d750d46e5e22dcd?themeId=1&templateId=2&fontStackId=0" width="500" height="280" frameborder="0" allowfullscreen></iframe>
@@ -42,7 +70,8 @@
                                     <iframe style="max-width:100%" src="https://wordwall.net/embed/2cc0dbe974b64f3baae1aab64c307776?themeId=1&templateId=8&fontStackId=0" width="500" height="280" frameborder="0" allowfullscreen></iframe>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
+
                         
                     </div>  
                 </div>
