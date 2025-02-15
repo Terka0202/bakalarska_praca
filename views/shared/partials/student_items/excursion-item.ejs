@@ -1,21 +1,22 @@
-<div class="col-md-4 p-0 text-center">
-    <div class="vonkajsi_div">
-        <div class="vnorene_div">
-            <img src="<%= E.excursion_img_path %>" alt="" class="img-fluid img_exkurzie">
-        </div>
-        <div class="vnorene_div">
-            <h4 class="podnadpis_exkurzie"><%= E.title_excursion %></h4>
-            <p class="text-center text_exkurzie">
-                <%= E.short_text %>
-            </p>
-            <span class="datum"><%= new Date(E.date_excursion).toLocaleString('sk-SK', { 
-                day: '2-digit', 
-                month: '2-digit', 
-                year: 'numeric' 
-            }) %></span>
-            <button class="button_exkurzie">
-                <a href="/ziak/exkurzie/<%= E.id_excursion %>" style="text-decoration: none; color: black;">Chcem vedieť viac</a>
-            </button>
-        </div>
+
+<div class="vonkajsi_div">
+    <div class="vnorene_div">
+        <img src="<%= E.excursion_img_path %>" alt="" class="img-fluid img_exkurzie">
+    </div>
+    <div class="vnorene_div">
+        <h4 class="podnadpis_exkurzie"><%= E.title_excursion %></h4>
+        <p class="text-center text_exkurzie">
+            <%= E.short_text %>
+        </p>
+        <span class="datum"><%= new Date(E.date_excursion).toLocaleString('sk-SK', { 
+            day: '2-digit', 
+            month: '2-digit', 
+            year: 'numeric' 
+        }) %></span>
+        <button class="button_exkurzie">
+            <a href="/ziak/exkurzie/<%= E.id_excursion %>" style="text-decoration: none; color: black;">Chcem vedieť viac</a>
+        </button>
     </div>
 </div>
+
+
