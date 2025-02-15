@@ -21,17 +21,21 @@
                 <!-- Hlavný obsah -->
                 <div style="padding: 20px;">
                     <div class="row justify-content-center d-flex">
-                        <div class="col-md-10">
+                        <div class="col-md-9 col-10">
                             <h1 class="nadpis_exkurzie"><%= quiz.title_quiz %></h1>
                         </div>
-                        
+                        <div class="col-md-1 col-2 justify-content-center align-items-center d-flex">
+                            <a href="/ziak/kvizy">
+                                <button type="button" class="button_spat" style="padding-left: 20px; padding-right: 20px;">Späť</button>
+                            </a>
+                        </div>
+                    </div>  
+                    <div class="row justify-content-center d-flex">
                         <div class="col-md-10">
                             <%- quiz.embed_code %>  
                             <!--musim pouzit pomlcku a nie = , lebo chcem vykreslit HTML kod a nie text-->
-                            </div>
                         </div>
-
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
