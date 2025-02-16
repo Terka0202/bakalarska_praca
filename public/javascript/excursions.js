@@ -1,6 +1,6 @@
 let currentPage = 1; // Začneme od 2 stránky (0 znamená prvé 3 divy, 1 dalsie 3 div, atd)
 const divCount = 3; // Počet divov, ktoré chceme zobraziť na stránku
-const excursions = document.querySelectorAll('.col-md-4'); // Získame všetky divy
+const excursions = document.querySelectorAll('.divko'); // Získame všetky divy
 
 
 function updateDisplay() {
@@ -9,7 +9,7 @@ function updateDisplay() {
         
         if (index >= currentPage * divCount && index < (currentPage + 1) * divCount) {
             div.style.display = 'block'; 
-        } else {                                // pozri sa na to ci by sa to nedalo nejak inak este urobit
+        } else {                              
             div.style.display = 'none'; 
         }
     });
@@ -24,6 +24,10 @@ function updateDisplay() {
 document.getElementById('next-page').addEventListener('click', function() {
     if ((currentPage + 1) * divCount < excursions.length) {
         currentPage++; // Prejdi na ďalšiu stránku
+
+        document.querySelectorAll(".img_exkurzie").forEach(img => {
+            img.style.filter = "grayscale(0%)";; 
+        });
         updateDisplay(); // Aktualizuj zobrazenie
     }
 });
@@ -32,6 +36,10 @@ document.getElementById('next-page').addEventListener('click', function() {
 document.getElementById('prev-page').addEventListener('click', function() {
     if (currentPage > 0) {
         currentPage--; // Prejdi na predchádzajúcu stránku
+        
+        document.querySelectorAll(".img_exkurzie").forEach(img => {
+            img.style.filter = "grayscale(100%)";;  // Nastaví sivú farbu 
+        });
         updateDisplay(); // Aktualizuj zobrazenie
     }
 });

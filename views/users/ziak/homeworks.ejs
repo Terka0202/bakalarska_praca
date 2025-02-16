@@ -58,7 +58,7 @@
                                     <tbody>
     
                                         <% for(const H of homeworks) { %>            
-                                            <tr data-id_homework="<%= H.id_homework %>" data-status = "<%= H.isSubmitted %>">
+                                            <tr data-id_homework="<%= H.id_homework %>" data-status = "<%= H.isSubmitted %>" class="tr_riadok">
                                                 <td class="text_td"><%= H.title_homework %></td>
                                                 <td class="text_td">
                                                     <%= new Date(H.dateTime).toLocaleString('sk-SK', { 
@@ -104,6 +104,19 @@
                                 </table>
                             </div>
                         </div>  
+
+                        <!--Navigačné šípky-->
+                        <div class="col-md-10">
+                            <div class="row justify-content-end">
+                                <div class="col-auto">
+                                    <button class="sipky_HM btn" id="prev-page" disabled> < </button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="sipky_HM btn" id="next-page"> > </button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

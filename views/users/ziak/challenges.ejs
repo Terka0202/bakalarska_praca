@@ -55,7 +55,7 @@
                                     <tbody>
     
                                         <% for(const CH of challenges) { %>            
-                                            <tr data-id_challenge="<%= CH.id_challenge %>" data-status = "<%= CH.isSubmitted %>">
+                                            <tr data-id_challenge="<%= CH.id_challenge %>" data-status = "<%= CH.isSubmitted %>" class="tr_riadok_ch">
                                                 <td class="text_td"><%= CH.title_challenge %></td>
                                                 <td class="text_td">
                                                     <%= new Date(CH.current_date).toLocaleString('sk-SK', { 
@@ -101,6 +101,19 @@
                                 </table>
                             </div>
                         </div> 
+
+                        <!--Navigačné šípky-->
+                        <div class="col-md-10">
+                            <div class="row justify-content-end">
+                                <div class="col-auto">
+                                    <button class="sipky_HM btn" id="prev-page_ch" disabled> < </button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="sipky_HM btn" id="next-page_ch"> > </button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

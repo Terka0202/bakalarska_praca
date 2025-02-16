@@ -29,17 +29,13 @@
                                 Máš na výber z uvedených exkurzií. Ak máš záujem zúčastniť sa, neváhaj a prihlás sa! Počet miest je obmedzený.
                             </p>
                             <p class="text_pod_nadpisom" style="margin-bottom: 10px;">
-                                <b>Prihlasovanie</b> prebieha do <b><%= new Date(excursions[0].log_in_date).toLocaleString('sk-SK', { 
-                                    day: '2-digit', 
-                                    month: '2-digit', 
-                                    year: 'numeric' 
-                                }) %></b>.
+                                <b>Prihlasovanie</b> prebieha do <b>dátumu uvedeného v jednotlivých ponukách</b>.
                             </p>
                         </div>
                         <div class="col-md-10">
-                            <div class="row" id="excursions-container">
+                            <div class="row justify-content-center d-flex" id="excursions-container">
                                 <% for (E of excursions) { %>
-                                    <div class="col-md-4 p-0 text-center">
+                                    <div class="col-xl-4 col-lg-10 col-md-10 p-0 text-center divko">
                                         <%- include("../../shared/partials/student_items/excursion-item", {E}) %>
                                     </div>
                                 <% } %>

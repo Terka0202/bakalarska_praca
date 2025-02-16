@@ -135,6 +135,9 @@
     font-family: 'News Cycle', sans-serif;
     font-size: 15px;
     color: #102A4B;
+    margin-left: 15px;
+    align-items: center;
+    justify-content: center;
 }
 
 .oznamenia_nadpis {
@@ -269,6 +272,22 @@
     font-size: 18px;
 }
 
+.tr_riadok {
+    background-color: transparent;
+}
+
+.sipky_HM {
+    width: 100%;
+    border-radius: 5px;
+    line-height: 1.5;
+    border: none;
+    font-family: "News Cycle", sans-serif;
+    font-weight: bold;
+    color: #102A4B;
+    font-size: 15px;
+    margin-top: 20px;
+    background-color: #dddddd;
+}
 /*DOMACE ULOHY*/
 /*----------------------------------------------------------------------------------------------------------------*/
 
@@ -299,6 +318,23 @@
 
 .odkaz_otvoriť:hover {
     color: #309645;
+}
+
+.tr_riadok_ch {
+    background-color: transparent;
+}
+
+.sipky_CH {
+    width: 100%;
+    border-radius: 5px;
+    line-height: 1.5;
+    border: none;
+    font-family: "News Cycle", sans-serif;
+    font-weight: bold;
+    color: #102A4B;
+    font-size: 15px;
+    margin-top: 20px;
+    background-color: #dddddd;
 }
 
 /*TYZDENNE VYZVY*/
@@ -442,6 +478,10 @@
     font-size: 25px;
     margin-top: 20px;
     background-color: #dddddd;
+}
+
+.divko {
+    border: none;
 }
 
 /*EXKURZIE*/

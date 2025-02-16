@@ -72,6 +72,32 @@ class Student {
         }
     }
 
+    static async getHomeworkStatus(status, id_homework) {
+        try {
+            const query = `
+                UPDATE homeworks SET status = ? WHERE id_homework = ?;
+            `;
+            const[records] = await db.query(query, [status, id_homework]);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+    static async getChallengeStatus(status, id_challenge) {
+        try {
+            const query = `
+                UPDATE weekly_challenges SET status = ? WHERE id_challenge = ?;
+            `;
+            const[records] = await db.query(query, [status, id_challenge]);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
     static async getAllChallenges() {
         try {
             const query = `
@@ -205,7 +231,6 @@ class Student {
             return res.status(500).render("shared/500");
         }
     }
-
 }
 
 module.exports = Student;

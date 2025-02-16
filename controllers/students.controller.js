@@ -11,8 +11,17 @@ const getProfilUcitel = (req, res) => {
 }
 
 /*INDEX*/
-const getIndexZiak = (req, res) => {
-    res.render("users/ziak/index_ziak");
+const getIndexZiak = async (req, res) => {
+    try {
+        const homeworks = await Student.getAllHomeworks();
+        const challenges = await Student.getAllChallenges();
+        const excursions = await Student.getAllExcursions();
+
+        res.render("users/ziak/index_ziak", {homeworks, challenges, excursions});
+    } catch (error) {
+        console.error(error);
+        return res.status(500).render("shared/500");
+    }
 }
 
 const getHomeworks = async (req, res) => {
@@ -30,11 +39,17 @@ const getHomeworks = async (req, res) => {
             // SOME hľadá v poli objektov submittedHomeworks, či existuje aspoň jeden prvok s danou podmienkou, ak ano, tak vracia TRUE a ukonči prehladavanie, ak nenajde, vrati FALSE
             const exists_id = submittedHomeworks.some(sub_homework => sub_homework.id_homework === homework.id_homework);
             
+
+            // ukladam si status do databazy
+
             if (exists_id && deadline > now) {
+                await Student.getHomeworkStatus("odovzdane", homework.id_homework);
                 homework.isSubmitted = "odovzdane";
             } else if (deadline < now && exists_id) {
+                await Student.getHomeworkStatus("oneskorene odovzdanie", homework.id_homework);
                 homework.isSubmitted = "oneskorene odovzdanie";
             } else if (!exists_id) {
+                await Student.getHomeworkStatus("neodovzdane", homework.id_homework);
                 homework.isSubmitted = "neodovzdane";
             }
         }
@@ -117,10 +132,13 @@ const getChallenges = async (req, res) => {
             const exists_id = submittedChallenges.some(sub_challenge => sub_challenge.id_challenge === challenge.id_challenge);
             
             if (exists_id && deadline > now) {
-                challenge.isSubmitted = "odovzdane";
+                await Student.getChallengeStatus("odovzdane", challenge.id_challenge); // zaznamenavanie statusu do tabulky kvoli notifikaciam
+                challenge.isSubmitted = "odovzdane"; // kvoli filtru to tu musim davat
             } else if (deadline < now && exists_id) {
+                await Student.getChallengeStatus("oneskorene odovzdanie", challenge.id_challenge);
                 challenge.isSubmitted = "oneskorene odovzdanie";
             } else if (!exists_id) {
+                await Student.getChallengeStatus("neodovzdane", challenge.id_challenge);
                 challenge.isSubmitted = "neodovzdane";
             }
         }

@@ -87,14 +87,40 @@
                                  
                                     <h1 class="oznamenia_nadpis text-center">Zoznam udalostí</h1>
 
-                                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mb-3">
+                                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mb-3 p-3">
                                         <li class="nav-item">
-                                            <i class="fs-2 bi-journal-check"></i> 
-                                            <span class="oznamenia_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis.</span>
+                                            <i class="fs-2 bi-journal-check"></i>
+
+                                            <% let newHomework = false %>
+
+                                            <% for (H of homeworks) { %> 
+                                                <% if (H.status === "neodovzdane") { %>
+                                                    <% newHomework = true %>
+                                                <% } %>
+                                            <% } %>
+
+                                            <% if (newHomework) { %>
+                                                <span class="oznamenia_text">Zadaná nová úloha</span>
+                                            <% } else { %>
+                                                <span class="oznamenia_text">Žiadna úloha</span>
+                                            <% } %>
                                         </li>
                                         <li class="nav-item">
                                             <i class="fs-2 bi-bell"></i> 
-                                            <span class="oznamenia_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis.</span>
+
+                                            <% let newChallenge = false %>
+
+                                            <% for (CH of challenges) { %> 
+                                                <% if (CH.status === "neodovzdane") { %>
+                                                    <% newChallenge = true %>
+                                                <% } %>
+                                            <% } %>
+
+                                            <% if (newChallenge) { %>
+                                                <span class="oznamenia_text">Zadaná nová výzva</span>
+                                            <% } else { %>
+                                                <span class="oznamenia_text">Žiadna nová výzva</span>
+                                            <% } %>
                                         </li>
                                         <li class="nav-item">
                                             <i class="fs-2 bi-geo-alt"></i> 
