@@ -17,6 +17,10 @@
     background-color: #081629;
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
 }
 
 .text_color {
@@ -27,10 +31,18 @@
     color: #c7ead7;
 }
 
+.odsadenie_od_sidebaru {
+    padding: 20px; 
+    height: 100vh; 
+    overflow-y: auto; 
+    margin-left: 350px;
+}
+
 /*SIDEBAR*/
 /*----------------------------------------------------------------------------------------------------------------*/
 
 /*INDEX*/
+
 .ulohy_odkaz {
     font-family: 'Amatic SC', sans-serif;
     font-weight: bold;
@@ -611,6 +623,10 @@ iframe {
         font-size: 6vw;
     }
 
+    .odsadenie_od_sidebaru {
+        margin-left: 0px;
+    }
+
     /*tyzdenne vyzvy*/
     .nadpis_tyzdenne_vyzvy {
         text-align: center;
@@ -674,6 +690,10 @@ iframe {
 
     .oznamenia_nadpis {
         font-size: 45px;
+    }
+
+    .odsadenie_od_sidebaru {
+        margin-left: 0px;
     }
 
     /*profil ziaka*/
