@@ -41,7 +41,7 @@ const getHomeworks = async (req, res) => {
             
 
             // ukladam si status do databazy
-
+            // TEST...
             if (exists_id && deadline > now) {
                 await Student.getHomeworkStatus("odovzdane", homework.id_homework);
                 homework.isSubmitted = "odovzdane";
