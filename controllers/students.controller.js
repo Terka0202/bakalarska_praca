@@ -15,9 +15,10 @@ const getIndexZiak = async (req, res) => {
     try {
         const homeworks = await Student.getAllHomeworks();
         const challenges = await Student.getAllChallenges();
-        const excursions = await Student.getAllExcursions();
+        const newDateExcursion = await Student.getLastExcursion();
+        const lastExcursion = newDateExcursion[0];
 
-        res.render("users/ziak/index_ziak", {homeworks, challenges, excursions});
+        res.render("users/ziak/index_ziak", {homeworks, challenges, lastExcursion});
     } catch (error) {
         console.error(error);
         return res.status(500).render("shared/500");
@@ -204,7 +205,7 @@ const insertChallenge_ziak = async (req, res) => {
 
 const getExcursions = async (req, res) => {
     try {
-        const excursions = await Student.getAllExcursions();
+        const excursions = await Student.getCurrentExcursions();
 
         res.render("users/ziak/excursions", {excursions});
     } catch (error) {

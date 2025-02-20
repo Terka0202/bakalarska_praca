@@ -180,6 +180,33 @@ class Student {
         }
     }
 
+    static async getCurrentExcursions() {
+        try {
+            const query = `
+                SELECT * FROM excursions ORDER BY date_excursion;
+            `;
+            const[records] = await db.query(query);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+    static async getLastExcursion() {
+        try {
+            const query = `
+                SELECT * FROM excursions ORDER BY date_excursion DESC LIMIT 1;
+            `;
+            const[records] = await db.query(query);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+
     static async getTeaching_materials_category() {
         try {
             const query = `
