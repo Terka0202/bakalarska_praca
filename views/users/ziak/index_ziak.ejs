@@ -89,8 +89,6 @@
 
                                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mb-3" style="padding-bottom: 25px; padding-left: 16px;">
                                         <li class="nav-item">
-                                            <i class="fs-2 bi-journal-check"></i>
-
                                             <% let newHomework = false %>
 
                                             <% for (H of homeworks) { %> 
@@ -100,14 +98,15 @@
                                             <% } %>
 
                                             <% if (newHomework) { %>
-                                                <span class="oznamenia_text">Zadaná nová úloha</span>
+                                                <i class="fs-2 bi-journal-check" style="color: red;"></i>
+                                                <span class="oznamenia_text" style="color: red; font-weight: bold;">Zadaná nová úloha!</span>
                                             <% } else { %>
+                                                <i class="fs-2 bi-journal-check"></i>
                                                 <span class="oznamenia_text">Žiadna úloha</span>
                                             <% } %>
                                         </li>
-                                        <li class="nav-item">
-                                            <i class="fs-2 bi-bell"></i> 
 
+                                        <li class="nav-item">
                                             <% let newChallenge = false %>
 
                                             <% for (CH of challenges) { %> 
@@ -117,14 +116,25 @@
                                             <% } %>
 
                                             <% if (newChallenge) { %>
-                                                <span class="oznamenia_text">Zadaná nová výzva</span>
+                                                <i class="fs-2 bi-bell" style="color: red;"></i> 
+                                                <span class="oznamenia_text" style="color: red; font-weight: bold;">Zadaná nová výzva!</span>
                                             <% } else { %>
+                                                <i class="fs-2 bi-bell"></i> 
                                                 <span class="oznamenia_text">Žiadna nová výzva</span>
                                             <% } %>
                                         </li>
+
                                         <li class="nav-item">
-                                            <i class="fs-2 bi-geo-alt"></i> 
-                                            <span class="oznamenia_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis.</span>
+                                            <% const currentDate = new Date(); %>
+                                            <% const excursionDate = new Date(lastExcursion.date_excursion); %>
+                                            
+                                            <% if (excursionDate > currentDate) { %>
+                                                <i class="fs-2 bi-geo-alt" style="color: red;"></i> 
+                                                <span class="oznamenia_text" style="color: red; font-weight: bold;">Zadaná nová exkurzia</span>
+                                            <% } else { %>
+                                                <i class="fs-2 bi-geo-alt"></i> 
+                                                <span class="oznamenia_text">Žiadna exkurzia</span>
+                                            <% } %>
                                         </li>
                                     </ul>
 

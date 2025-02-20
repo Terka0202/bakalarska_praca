@@ -24,10 +24,6 @@ function updateDisplay() {
 document.getElementById('next-page').addEventListener('click', function() {
     if ((currentPage + 1) * divCount < excursions.length) {
         currentPage++; // Prejdi na ďalšiu stránku
-
-        document.querySelectorAll(".img_exkurzie").forEach(img => {
-            img.style.filter = "grayscale(0%)";; 
-        });
         updateDisplay(); // Aktualizuj zobrazenie
     }
 });
@@ -36,10 +32,6 @@ document.getElementById('next-page').addEventListener('click', function() {
 document.getElementById('prev-page').addEventListener('click', function() {
     if (currentPage > 0) {
         currentPage--; // Prejdi na predchádzajúcu stránku
-        
-        document.querySelectorAll(".img_exkurzie").forEach(img => {
-            img.style.filter = "grayscale(100%)";;  // Nastaví sivú farbu 
-        });
         updateDisplay(); // Aktualizuj zobrazenie
     }
 });
