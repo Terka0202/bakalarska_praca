@@ -24,7 +24,7 @@ class Student {
     static async getAllHomeworks() {
         try {
             const query = `
-                SELECT * FROM homeworks;
+                SELECT * FROM homeworks ORDER BY dateTime DESC;
             `;
             const[records] = await db.query(query);
             return records;
@@ -105,7 +105,7 @@ class Student {
     static async getAllChallenges() {
         try {
             const query = `
-                SELECT * FROM weekly_challenges;
+                SELECT * FROM weekly_challenges ORDER BY currentDate DESC;
             `;
             const[records] = await db.query(query);
             return records;

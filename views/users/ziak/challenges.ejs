@@ -58,7 +58,7 @@
                                             <tr data-id_challenge="<%= CH.id_challenge %>" data-status = "<%= CH.isSubmitted %>" class="tr_riadok_ch">
                                                 <td class="text_td"><%= CH.title_challenge %></td>
                                                 <td class="text_td">
-                                                    <%= new Date(CH.current_date).toLocaleString('sk-SK', { 
+                                                    <%= new Date(CH.currentDate).toLocaleString('sk-SK', { 
                                                         day: '2-digit', // 2-digit naformatuje na 2-ciferne cislo
                                                         month: '2-digit',
                                                         year: 'numeric', // numeric zas da plný format roku napr. 2024
