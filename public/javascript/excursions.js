@@ -1,4 +1,4 @@
-let currentPage = 1; // Začneme od 2 stránky (0 znamená prvé 3 divy, 1 dalsie 3 div, atd)
+let currentPage = 0; // Začneme od 2 stránky (0 znamená prvé 3 divy, 1 dalsie 3 div, atd)
 const divCount = 3; // Počet divov, ktoré chceme zobraziť na stránku
 const excursions = document.querySelectorAll('.divko'); // Získame všetky divy
 

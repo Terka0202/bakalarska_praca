@@ -14,6 +14,7 @@ const {
     insertChallenge_ziak,
     getExcursions,
     getExcursionDetails,
+    postLogged_in_students,
     getQuizzes,
     getQuizzesDetails,
     getTeachingMaterials_category,
@@ -36,6 +37,7 @@ router.post("/ziak/tyzdenne-vyzvy/:id", upload.single("file_path_challenge"), in
 
 router.get("/ziak/exkurzie", getExcursions);
 router.get("/ziak/exkurzie/:id", getExcursionDetails);
+router.post("/ziak/exkurzie/:id", postLogged_in_students);
 
 router.get("/ziak/kvizy", getQuizzes);
 router.get("/ziak/kvizy/:id", getQuizzesDetails);
