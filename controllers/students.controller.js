@@ -218,8 +218,28 @@ const getExcursionDetails = async (req, res) => {
     try {
         const id_excursion = req.params.id;
         const excursions = await Student.getExcursion_details(id_excursion);
+        const countStudents = await Student.getLoggedInStudentsCount();
+        const allStudents = countStudents[0]['COUNT(*)'];
         const excursion = excursions[0];
-        res.render("users/ziak/excursion-details", {excursion});
+
+        res.render("users/ziak/excursion-details", {excursion, allStudents});
+    } catch (error) {
+        console.error(error);
+        return res.status(500).render("shared/500");
+    }
+}
+
+const postLogged_in_students = async (req, res) => {
+    try {
+        const id_user = res.locals.user.id;
+        const id_excursion = req.params.id;
+
+        let isLogged_in = true;
+
+        const loggedInStudent = new Student({type: "excursion", id_excursion, id_user, isLogged_in});
+        await loggedInStudent.insertLogedInStudent();
+        
+        res.redirect("/ziak/exkurzie");
     } catch (error) {
         console.error(error);
         return res.status(500).render("shared/500");
@@ -293,6 +313,7 @@ module.exports = {
     insertChallenge_ziak,
     getExcursions,
     getExcursionDetails,
+    postLogged_in_students,
     getQuizzes,
     getQuizzesDetails,
     getTeachingMaterials_category,

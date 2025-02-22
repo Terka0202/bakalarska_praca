@@ -14,6 +14,10 @@ class Student {
             this.text_challenge = data.text_challenge;
             this.file_path_challenge = data.file_path_challenge;
             this.isCorrect = data.isCorrect;
+        } else if (data.type === "excursion") {
+            this.id_excursion = data.id_excursion;
+            this.id_user = data.id_user;
+            this.isLogged_in = data.isLogged_in;
         }
     }
 
@@ -183,7 +187,7 @@ class Student {
     static async getCurrentExcursions() {
         try {
             const query = `
-                SELECT * FROM excursions ORDER BY date_excursion;
+                SELECT * FROM excursions ORDER BY date_excursion DESC;
             `;
             const[records] = await db.query(query);
             return records;
@@ -206,6 +210,33 @@ class Student {
         }
     }
 
+    async insertLogedInStudent() {
+        try {
+            const query = `
+                INSERT INTO logged_in_students (id_excursion, id_user, isLogged_in)
+                VALUES (?)
+            `;
+
+            const [result] = await db.query(query, [[this.id_excursion, this.id_user, this.isLogged_in]]);
+            return result;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+    static async getLoggedInStudentsCount() {
+        try {
+            const query = `
+                SELECT COUNT(*) FROM logged_in_students;
+            `;
+            const[records] = await db.query(query);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
 
     static async getTeaching_materials_category() {
         try {
