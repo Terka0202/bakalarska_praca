@@ -171,6 +171,11 @@
 
 .container_odsadenie {
     margin-top: 100px;
+    margin-bottom: 100px; 
+}
+
+.margin_profil {
+    margin-left: 130px;
 }
 
 .img_profil {
@@ -179,11 +184,6 @@
     height: 200px;
     align-items: center;
     object-fit: cover;
-}
-
-.pen_img {
-    border: none;
-    background-color: transparent;
 }
 
 .profil_udaje {
@@ -199,20 +199,16 @@
     font-family: 'News Cycle', 'sans-serif';
     color: #102A4B;
     font-size: 20px;
-    margin: 0 90px; /* Medzera medzi textom a čiarou */
     text-align: left;
-    margin-left: 140px;
 }
 
 .line {
     border-top: 1px solid #000; /* Tenká čierna čiara */
     width: 100%;
-    margin-left: 130px;
 }
 
 .border_ {
     margin-top: 20px;
-    margin-left: 130px;
 }
 
 .button_heslo {
@@ -222,7 +218,21 @@
     color: #102A4B;
     padding: 5px 10px 5px 10px;
     font-family: 'News Cycle', sans-serif;
-    margin-left: 130px;
+    width: 100%;
+}
+
+.button_edit {
+    border: none;
+    background-color: #dddddd;
+    border-radius: 5px;
+    color: #102A4B;
+    padding: 5px 10px 5px 10px;
+    font-family: 'News Cycle', sans-serif;
+    width: 60%;
+}
+
+.pen_icon {
+    padding-right: 15px;
 }
 
 .nadpis_profil {
@@ -233,7 +243,6 @@
     top: -90px; 
     left: 10px; 
     z-index: 10;
-    margin-left: 130px;
 }
 
 .meno_priezvisko {
@@ -241,6 +250,105 @@
     font-weight: 200;
     color: #309645;
 }
+
+.label_input {
+    margin-top: 20px;
+    font-family: 'Amatic SC', sans-serif;
+    color: #102A4B;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.input_zmena {
+    margin-top: 10px;
+    font-family: 'News Cycle', 'sans-serif';
+    line-height: 2;
+    width: 100%;
+}
+.input_zmena:focus {
+    box-shadow: none !important;
+    border-color: #309645 !important;
+}
+
+.button_ulozit {
+    width: 100%;
+    border: none;
+    line-height: 2;
+    background-color: #ffcd0b;
+    border-radius: 5px;
+    color: #102A4B;
+    padding: 5px 10px 5px 10px;
+    font-family: 'News Cycle', sans-serif;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.button_zrusit {
+    width: 100%;
+    border: none;
+    line-height: 2;
+    background-color: #dddddd;
+    border-radius: 5px;
+    color: #102A4B;
+    padding: 5px 10px 5px 10px;
+    font-family: 'News Cycle', sans-serif;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+#editModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+}
+
+#editModalHeslo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+}
+
+.hidden {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.modalne_okno {
+    background-color: white;
+    border-radius: 20px;
+    height: 400px;
+    width: 500px;
+}
+
+.margin_modal {
+    margin: 40px;
+}
+
+.nadpis_modal {
+    font-family: 'Amatic SC', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    color: #102A4B;
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 /*PROFIL*/
 /*----------------------------------------------------------------------------------------------------------------*/
 
@@ -576,24 +684,8 @@ iframe {
         top: -50px; 
     }
 
-    .span_profil {
-        margin-left: 10px;
-    }
-
-    .line {
+    .margin_profil {
         margin-left: 0px;
-    }
-
-    .border_ {
-        margin-left: 0px;
-    }
-
-    .button_heslo {
-        margin-left: 0px;
-    }
-
-    .meno_priezvisko {
-        margin-bottom: 100px;
     }
     
     
@@ -704,24 +796,8 @@ iframe {
         top: -50px; 
     }
 
-    .span_profil {
-        margin-left: 10px;
-    }
-
-    .line {
-        margin-left: 0px;
-    }
-
-    .border_ {
-        margin-left: 0px;
-    }
-
-    .button_heslo {
-        margin-left: 0px;
-    }
-
-    .meno_priezvisko {
-        margin-bottom: 100px;
+    .margin_profil {
+        margin-left: 30px;
     }
 
     /*exkurzie*/
@@ -759,21 +835,10 @@ iframe {
         top: -60px; 
     }
 
-    .span_profil {
-        margin-left: 90px;
-    }
-
-    .line {
+    .margin_profil {
         margin-left: 80px;
     }
 
-    .border_ {
-        margin-left: 80px;
-    }
-
-    .button_heslo {
-        margin-left: 80px;
-    }
 }
 
 @media (min-width: 1700px) {
@@ -793,21 +858,10 @@ iframe {
         top: -90px; 
     }
 
-    .span_profil {
-        margin-left: 140px;
-    }
-
-    .line {
+    .margin_profil {
         margin-left: 130px;
     }
 
-    .border_ {
-        margin-left: 130px;
-    }
-
-    .button_heslo {
-        margin-left: 130px;
-    }
 }
 
 /*MEDIA - MOBILY, TABLETY, PC*/

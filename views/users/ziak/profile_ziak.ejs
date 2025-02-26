@@ -28,17 +28,14 @@
                                 <!-- Prvá polovica -->
                                 <div class="col-md-6 p-0 position-relative">
                                     <h1 class="nadpis_profil position-absolute">Profil žiaka</h1>
-                                    <div class="container container_odsadenie" style="margin-bottom: 100px;">
-                                        <form action="">
+                                    <div class="container container_odsadenie">
+                                        <div class="margin_profil">
                                             <div class="row">
                                                 <div class="col-md-12 col-lg-12 col-xl-6 d-flex justify-content-between align-items-center border_">
                                                     <p class="profil_udaje">Meno</p>
-                                                    <button type="submit" class="pen_img">
-                                                        <img src="/obrazky/pen_icon.png" alt="" width="20" class="text-center img-fluid">
-                                                    </button>
                                                 </div>
                                             </div>
-
+    
                                             <!--ciara-->
                                             <div class="row">
                                                 <div class="col-md-12 col-lg-12 col-xl-6">
@@ -47,16 +44,13 @@
                                                 </div>
                                             </div>
                                             <!--ciara-->
-
+    
                                             <div class="row">
                                                 <div class="col-md-12 col-lg-12 col-xl-6 d-flex justify-content-between align-items-center border_">
                                                     <p class="profil_udaje">Priezvisko</p>
-                                                    <button type="submit" class="pen_img">
-                                                        <img src="/obrazky/pen_icon.png" alt="" width="20" class="text-center img-fluid">
-                                                    </button>
                                                 </div>
                                             </div>
-
+    
                                             <!--ciara-->
                                             <div class="row">
                                                 <div class="col-md-12 col-lg-12 col-xl-6">
@@ -65,16 +59,13 @@
                                                 </div>
                                             </div>
                                             <!--ciara-->
-
+    
                                             <div class="row">
                                                 <div class="col-md-12 col-lg-12 col-xl-6 d-flex justify-content-between align-items-center border_">
                                                     <p class="profil_udaje">E-mail</p>
-                                                    <button type="submit" class="pen_img">
-                                                        <img src="/obrazky/pen_icon.png" alt="" width="20" class="text-center img-fluid">
-                                                    </button>
                                                 </div>
                                             </div>
-
+    
                                             <!--ciara-->
                                             <div class="row">
                                                 <div class="col-md-12 col-lg-12 col-xl-6">
@@ -83,19 +74,25 @@
                                                 </div>
                                             </div>
                                             <!--ciara-->
-
+    
                                             <div class="row">
                                                 <div class="col-md-12 col-lg-12 col-xl-6 d-flex justify-content-between align-items-center border_">
                                                     <p class="profil_udaje">Heslo </p>
                                                 </div>
                                             </div>
-
+    
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <button type="button" class="button_heslo">Zmena hesla</button>
+                                                <div class="col-md-5">
+                                                    <button type="button" class="button_heslo" id="openModalHeslo">Zmena hesla</button>
+                                                </div>
+                                                <div class="col-md-7 justify-content-start d-flex">
+                                                    <button type="button" class="button_edit" id="openModalBtn">
+                                                        <i class="bi bi-pencil-square pen_icon"></i>
+                                                        Upraviť
+                                                    </button>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -111,11 +108,80 @@
                                     </div>
                                 </div>
                             </div>
-                            
-
                         </div>
-                        
                     </div>
+
+                    <!-- modal pre zmenu mena a priezviska -->
+                    <div id="editModal" class="fixed inset-0 items-center justify-center bg-black bg-opacity-50 hidden z-50">
+                        <div class="modalne_okno">
+                            <div class="margin_modal">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-md-10">
+                                        <h2 class="nadpis_modal">Zmena údajov</h2>
+                                    </div>
+                                </div>
+                                <form action="/ziak/profil/zmena-udajov" method="POST">
+                                
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-md-10">
+                                            <input type="text" id="name" name="name" class="input_zmena form-control" placeholder="Zadaj meno">
+                                        </div>
+                                    </div>
+                                 
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-md-10">
+                                            <input type="text" id="surname" name="surname" class="input_zmena form-control" placeholder="Zadaj priezvisko">
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-md-5 text-center">
+                                            <button type="submit" class="button_ulozit" id="closeAndSaveModalBtn">Uložiť</button>
+                                        </div>
+                                        <div class="col-md-5 text-center">
+                                            <button type="button" class="button_zrusit" id="closeModalBtn">Zrušiť</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--modal pre zmenu hesla-->
+                    <div id="editModalHeslo" class="fixed inset-0 items-center justify-center bg-black bg-opacity-50 hidden z-50">
+                        <div class="modalne_okno">
+                            <div class="margin_modal">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-md-10">
+                                        <h2 class="nadpis_modal">Zmena hesla</h2>
+                                    </div>
+                                </div>
+                            
+                                <form action="/ziak/profil/zmena-hesla" method="POST">
+                                
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-md-10">
+                                            <input type="password" id="oldPassword" name="oldPassword" class="input_zmena form-control" placeholder="Zadaj staré heslo">
+                                        </div>
+                                    </div>
+                                 
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-md-10">
+                                            <input type="password" id="newPassword" name="newPassword" class="input_zmena form-control" placeholder="Zadaj nové heslo">
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-md-5 text-center">
+                                            <button type="submit" class="button_ulozit" id="closeSaveModalHeslo">Uložiť</button>
+                                        </div>
+                                        <div class="col-md-5 text-center">
+                                            <button type="button" class="button_zrusit" id="closeModalHeslo">Zrušiť</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -125,5 +191,7 @@
     <!--FOOTER-->
 
     <!--FOOTER-->
+
+    <script src="/javascript/profil_ziaka.js"></script>
 </body>
 </html>

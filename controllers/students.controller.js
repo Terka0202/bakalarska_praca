@@ -1,9 +1,68 @@
 const Student = require("../models/student.model");
+const User = require("../models/user.model");
 const fs = require('fs');
+const crypto = require("crypto");
 
 /*PROFIL*/
 const getProfilZiak = (req, res) => {
     res.render("users/ziak/profile_ziak");
+}
+
+const postNewStudentNameSurname = async (req, res) => {
+
+    const {name, surname} = req.body;
+
+    try {
+        const id_user = res.locals.user.id;
+ 
+        const newStudentNameSurname = new User(id_user, name, surname);
+        await newStudentNameSurname.updateNameSurname();
+
+        req.session.user.name = name;
+        req.session.user.surname = surname;
+
+        res.redirect("/ziak/profil");
+   
+    } catch (error) {
+        console.error(error);
+        return res.status(500).render("shared/500");
+    }
+}
+
+const postNewStudentPassword = async (req, res) => {
+
+    const {oldPassword, newPassword} = req.body;
+
+    try {
+        const id_user = res.locals.user.id;
+        const existPassword = await User.getUserPassword(id_user);
+        const password = existPassword[0].password;
+        const salt = existPassword[0].salt;
+        
+
+        if (!existPassword) {
+            return res.status(400).send("Heslo neexistuje.");
+        }
+
+        const hashedOldPassword = crypto.pbkdf2Sync(oldPassword, salt, 1000, 64, "sha512").toString("hex");
+
+    
+        if (hashedOldPassword === password) {
+            const newSalt = crypto.randomBytes(16).toString("hex");
+            const hashedNewPassword = crypto.pbkdf2Sync(newPassword, newSalt, 1000, 64, "sha512").toString("hex");
+
+            const updatePassword = new User(id_user, null, null, null, hashedNewPassword, newSalt, null); // poradie konštruktora musí byť dodržané!!!!
+            await updatePassword.updatePassword();
+        } else {
+            return res.status(401).json({ error: "Nesprávne staré heslo" });
+        }
+
+        res.redirect("/ziak/profil");
+   
+    } catch (error) {
+        console.error(error);
+        return res.status(500).render("shared/500");
+    }
 }
 
 const getProfilUcitel = (req, res) => {
@@ -317,5 +376,7 @@ module.exports = {
     getQuizzes,
     getQuizzesDetails,
     getTeachingMaterials_category,
-    getTeachingMaterials
+    getTeachingMaterials,
+    postNewStudentNameSurname,
+    postNewStudentPassword
 };
