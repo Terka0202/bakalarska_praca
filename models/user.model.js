@@ -3,11 +3,13 @@ const db = require("../data/database");
 
 class User {
 
-    constructor(paName, paSurname, paEmail, paPassword, paIsTeacher) {
+    constructor(paId_user, paName, paSurname, paEmail, paPassword, paSalt, paIsTeacher) {
+        this.id_user = paId_user;
         this.name = paName;
         this.surname = paSurname;
         this.email = paEmail;
         this.password = paPassword;
+        this.salt = paSalt;
         this.isTeacher = paIsTeacher
     }
     
@@ -72,6 +74,49 @@ class User {
             return true;
         } else {
             return false;
+        }
+    }
+
+    async updateNameSurname() {
+        try {
+            const query = `
+                UPDATE users SET name = ?, surname = ? WHERE id_user = ?;
+            `;
+            const[result] = await db.query(query, [this.name, this.surname, this.id_user]); 
+            return result;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+    static async getUserPassword(id_user) {
+        try {
+            const query = `
+                SELECT password, salt FROM users WHERE id_user = ?;
+            `;
+            const[records] = await db.query(query, [id_user]);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
+        }
+    }
+
+    async updatePassword() {
+        try {
+
+            console.log("Heslo pred uložením:", this.password);
+            console.log("Salt pred uložením:", this.salt);
+
+            const query = `
+                UPDATE users SET password = ?, salt = ? WHERE id_user = ?;
+            `;
+            const[records] = await db.query(query, [this.password, this.salt, this.id_user]);
+            return records;
+        } catch (error) {
+            console.error(error);
+            return res.status(500).render("shared/500");
         }
     }
 }

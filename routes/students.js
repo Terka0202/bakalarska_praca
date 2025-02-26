@@ -18,11 +18,16 @@ const {
     getQuizzes,
     getQuizzesDetails,
     getTeachingMaterials_category,
-    getTeachingMaterials
+    getTeachingMaterials,
+    postNewStudentNameSurname,
+    postNewStudentPassword
 } = require("../controllers/students.controller");
 
 
 router.get("/ziak/profil", getProfilZiak);
+router.post("/ziak/profil/zmena-udajov", postNewStudentNameSurname);
+router.post("/ziak/profil/zmena-hesla", postNewStudentPassword);
+
 router.get("/ucitel/profil", getProfilUcitel);
 
 router.get("/ziak/domov", getIndexZiak);
