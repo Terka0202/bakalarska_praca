@@ -2,6 +2,7 @@ const Student = require("../models/student.model");
 const User = require("../models/user.model");
 const fs = require('fs');
 const crypto = require("crypto");
+const nodemailer = require("nodemailer");
 
 /*PROFIL*/
 const getProfilZiak = (req, res) => {
@@ -63,10 +64,6 @@ const postNewStudentPassword = async (req, res) => {
         console.error(error);
         return res.status(500).render("shared/500");
     }
-}
-
-const getProfilUcitel = (req, res) => {
-    res.render("users/ucitel/profile_ucitel");
 }
 
 /*INDEX*/
@@ -362,7 +359,6 @@ const getQuizzesDetails = async (req, res) => {
 
 module.exports = {
     getProfilZiak,
-    getProfilUcitel,
     getIndexZiak,
     getHomeworks,
     getHomeworkDetails,
