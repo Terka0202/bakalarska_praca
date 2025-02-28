@@ -687,6 +687,29 @@ iframe {
     .margin_profil {
         margin-left: 0px;
     }
+
+    .button_edit {
+        width: 100%;
+    }
+
+    .button_heslo {
+        width: 100%;
+    }
+
+    .modalne_okno {
+        background-color: white;
+        border-radius: 20px;
+        height: 400px;
+        width: 400px;
+    }
+
+    .button_ulozit {
+        margin-top: 20px;
+    }
+    
+    .button_zrusit {
+        margin-top: 10px;
+    }
     
     
     
