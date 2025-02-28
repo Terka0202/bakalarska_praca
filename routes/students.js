@@ -4,7 +4,6 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const {
     getProfilZiak,
-    getProfilUcitel,
     getIndexZiak,
     getHomeworks,
     getHomeworkDetails,
@@ -27,8 +26,6 @@ const {
 router.get("/ziak/profil", getProfilZiak);
 router.post("/ziak/profil/zmena-udajov", postNewStudentNameSurname);
 router.post("/ziak/profil/zmena-hesla", postNewStudentPassword);
-
-router.get("/ucitel/profil", getProfilUcitel);
 
 router.get("/ziak/domov", getIndexZiak);
 
