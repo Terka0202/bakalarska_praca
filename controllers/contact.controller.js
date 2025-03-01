@@ -11,7 +11,7 @@ const getContactForm_ziak = (req, res) => {
 
 const postSendMail = async (req, res) => {
     const { name, surname, email, text } = req.body;
-
+    // len skusam
     try {
         // Nastavenie SMTP servera (napr. MS Outlook)
         const transporter = nodemailer.createTransport({
