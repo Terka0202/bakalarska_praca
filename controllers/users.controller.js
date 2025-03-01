@@ -105,12 +105,18 @@ const existingLoginUcitel = async (req, res) => {
                 surname: existingUser[0].surname,
                 email: existingUser[0].email,
                 isTeacher: existingUser[0].isTeacher,
+                isAdmin: existingUser[0].isAdmin === 1,
             };
-            
-            req.session.isAdmin = existingUser[0].isAdmin === 1;
-            req.session.save(() => {
-                res.redirect("/ucitel/profil");
-            });
+
+            if (req.session.user.isAdmin) {
+                req.session.save(() => {
+                    res.redirect("/admin");
+                });
+            } else {
+                req.session.save(() => {
+                    res.redirect("/ucitel/profil");
+                });
+            }
         
         } else {
             req.session.loginError = "Zadané heslo je nesprávne";
@@ -123,11 +129,6 @@ const existingLoginUcitel = async (req, res) => {
         return res.status(500).render("shared/500");
     }
 };
-
-const getLoginAdmin = (req, res) => {
-    res.render("users/admin/index_admin");
-};
-
 
 /*REGISTRACIA*/
 const getSignUpZiak = (req, res) => {
@@ -189,7 +190,7 @@ const createSignUpUcitel = async (req, res) => {
             return res.redirect("/registracia-ucitel");
         }
 
-        const newUser = new User(name, surname, email, password, true);
+        const newUser = new User(null, name, surname, email, password, null, true);
         await newUser.signUp();
 
         res.redirect("/prihlasenie-ucitel");
@@ -211,7 +212,6 @@ const logOut = (req, res) => {
 module.exports = {
     getLoginZiak,
     getLoginUcitel,
-    getLoginAdmin,
     existingLoginZiak,
     existingLoginUcitel,
     getSignUpZiak,

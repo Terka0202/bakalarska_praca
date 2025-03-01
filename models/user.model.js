@@ -3,7 +3,7 @@ const db = require("../data/database");
 
 class User {
 
-    constructor(paId_user, paName, paSurname, paEmail, paPassword, paSalt, paIsTeacher) {
+    constructor(paId_user = null, paName, paSurname, paEmail, paPassword, paSalt = null, paIsTeacher) {
         this.id_user = paId_user;
         this.name = paName;
         this.surname = paSurname;
@@ -105,10 +105,6 @@ class User {
 
     async updatePassword() {
         try {
-
-            console.log("Heslo pred uložením:", this.password);
-            console.log("Salt pred uložením:", this.salt);
-
             const query = `
                 UPDATE users SET password = ?, salt = ? WHERE id_user = ?;
             `;
