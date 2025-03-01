@@ -5,7 +5,7 @@
     <div class="row w-100 align-items-center d-flex justify-content-end"> <!-- Vytvorenie riadku pre všetky prvky -->
 
       <% if (!locals.isAuth) { %>
-          <div class="col-md-2 text-center">
+          <div class="col-md-1 text-center">
               <a href="/uvod" style="text-decoration: none;">
                   <img src="/obrazky/logo9.png" alt="Logo" width="90" class="text-center img-fluid">
               </a>
@@ -24,6 +24,11 @@
           </div>
           <div class="col-md-2 text-center">
               <a href="/prihlasenie-ucitel" class="buttton_nav">UČITEĽ</a>
+          </div>
+          <div class="col-md-1 text-center">
+            <a href="/prihlasenie-admin" style="color: #102A4B;">
+              <i class="fs-1 bi-person-gear"></i>
+            </a>
           </div>
 
       <% } else { %>
@@ -141,3 +146,4 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+

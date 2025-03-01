@@ -124,6 +124,10 @@ const existingLoginUcitel = async (req, res) => {
     }
 };
 
+const getLoginAdmin = (req, res) => {
+    res.render("users/admin/index_admin");
+};
+
 
 /*REGISTRACIA*/
 const getSignUpZiak = (req, res) => {
@@ -207,6 +211,7 @@ const logOut = (req, res) => {
 module.exports = {
     getLoginZiak,
     getLoginUcitel,
+    getLoginAdmin,
     existingLoginZiak,
     existingLoginUcitel,
     getSignUpZiak,
