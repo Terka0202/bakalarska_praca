@@ -1,0 +1,44 @@
+/*INDEX*/
+/*.div_index {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
+    height: 300px;
+}
+
+.nadpis_index {
+    font-family: 'Antonio', sans-serif;
+    color: #309645;
+}*/
+
+.div_index {
+    position: relative;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.div_index img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(60%); /* Tmavší obrázok */
+    transition: 0.3s ease-in-out;
+}
+
+.div_index:hover img {
+    filter: brightness(75%); /* Pri hover sa trochu zosvetlí */
+}
+
+.nadpis_index {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    font-family: 'Antonio', sans-serif;
+    color: white;
+}
+/*INDEX*/
+/*-------------------------------------------------------------------------------------------------------------*/

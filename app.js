@@ -11,6 +11,7 @@ const users_routes = require("./routes/users");
 const contact_routes = require("./routes/contact");
 const students_routes = require("./routes/students");
 const teachers_routes = require("./routes/teachers");
+const admin_routes = require("./routes/admin");
 const { createSessionConfig } = require("./config/session");
 
 app.use(express.urlencoded({extended: false}));
@@ -28,6 +29,7 @@ app.use("/", users_routes);
 app.use("/", contact_routes);
 app.use("/", students_routes);
 app.use("/", teachers_routes);
+app.use("/", admin_routes);
 
 app.use(errorHandler);   
 app.use(pageNotFound); 

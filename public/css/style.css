@@ -79,6 +79,19 @@
     color: #c7ead7;
 }
 
+.profil_header_admin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #309645;
+    font-family: 'Antonio', 'sans-serif';
+    font-weight: 200;
+    font-size: 20px;
+    text-decoration: none;
+    align-items: center;
+}
+
 .a_profil_mobil {
     color: #309645;
     font-family: 'Antonio', 'sans-serif';
@@ -528,6 +541,18 @@
 
 .odsadenie {
     padding-top: 300px;
+}
+
+.odsadenie_admin {
+    margin-top: 150px;
+}
+
+.admin_prihlasenie_nadpis {
+    font-size: 80px;
+    font-family: 'Antonio', sans-serif;
+    font-weight: 200;
+    color: #309645;
+    margin-bottom: 40px;
 }
 
 /*MOBIL*/

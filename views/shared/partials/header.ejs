@@ -5,7 +5,7 @@
     <div class="row w-100 align-items-center d-flex justify-content-end"> <!-- Vytvorenie riadku pre všetky prvky -->
 
       <% if (!locals.isAuth) { %>
-          <div class="col-md-1 text-center">
+          <div class="col-md-2 text-center">
               <a href="/uvod" style="text-decoration: none;">
                   <img src="/obrazky/logo9.png" alt="Logo" width="90" class="text-center img-fluid">
               </a>
@@ -25,22 +25,36 @@
           <div class="col-md-2 text-center">
               <a href="/prihlasenie-ucitel" class="buttton_nav">UČITEĽ</a>
           </div>
-          <div class="col-md-1 text-center">
-            <a href="/prihlasenie-admin" style="color: #102A4B;">
-              <i class="fs-1 bi-person-gear"></i>
-            </a>
-          </div>
-
       <% } else { %>
         <% if (locals.user.isTeacher) { %>
-          <div class="col-md-3 text-center">
-            <a href="/ucitel/profil" class="profil_header">
-              <img src="/obrazky/teacher_profile.png" alt="" width="40" style="margin-right: 20px;">
-              <%= locals.user.name %> <%= locals.user.surname %>
+          <div class="col-md-1 text-center">
+            <a href="/uvod" style="text-decoration: none;">
+                <img src="/obrazky/logo9.png" alt="Logo" width="90" class="text-center img-fluid">
             </a>
           </div>
+          <% if (!locals.user.isAdmin) { %>
+            <div class="col-md-3 text-center">
+              <a href="/ucitel/profil" class="profil_header">
+                <img src="/obrazky/teacher_profile.png" alt="" width="40" style="margin-right: 20px;">
+                <%= locals.user.name %> <%= locals.user.surname %>
+              </a>
+            </div>
+          <% } else { %>
+            <div class="col-md-2 text-center">
+              <a href="/pouzivatelia" class="a_header">POUŽÍVATELIA</a>
+            </div>
+            <div class="col-md-2 text-center">
+              <a href="/pouzivatelia" class="a_header">ŽIACI</a>
+            </div>
+            <div class="col-md-2 text-center">
+              <a href="/pouzivatelia" class="a_header">UČITELIA</a>
+            </div>
+            <div class="col-md-3 text-center">
+              <i class="fs-2 bi-person-gear"></i>
+              <span class="profil_header_admin"><%= locals.user.name %> <%= locals.user.surname %></span>
+            </div>
+          <% } %>
         <% } else { %>
-
           <div class="col-md-3 text-center" style="margin-top: 20px;">
             <a href="/ziak/profil" class="profil_header">
               <img src="/obrazky/student_profile.png" alt="" width="40" style="margin-right: 20px;">
@@ -70,9 +84,15 @@
       </a>
     <% } else { %>
       <% if (locals.user.isTeacher) { %>
-        <a href="/uvod">
-          <img src="/obrazky/logo9.png" alt="" width="80">
-        </a>
+        <% if (!locals.user.isAdmin) { %>
+          <a href="/ucitel/domov">
+            <img src="/obrazky/logo9.png" alt="" width="80">
+          </a>
+        <% } else { %>
+          <a href="/admin">
+            <img src="/obrazky/logo9.png" alt="" width="80">
+          </a>
+        <% } %>
       <% } else { %>
         <a href="/ziak/domov">
           <img src="/obrazky/logo9.png" alt="" width="80">
@@ -107,12 +127,28 @@
             </div>
         <% } else { %>
           <% if (locals.user.isTeacher) { %>
-            <div class="col-md-3 text-center">
-              <a href="/ucitel/profil" class="profil_header">
-                <img src="/obrazky/teacher_profile.png" alt="" width="40" style="margin-right: 20px;">
-                <%= locals.user.name %> <%= locals.user.surname %>
-              </a>
-            </div>
+            <% if (!locals.user.isAdmin) { %>
+              <div class="col-md-3 text-center">
+                <a href="/ucitel/profil" class="profil_header">
+                  <img src="/obrazky/teacher_profile.png" alt="" width="40" style="margin-right: 20px;">
+                  <%= locals.user.name %> <%= locals.user.surname %>
+                </a>
+              </div>
+            <% } else { %>
+              <div class="col-md-2 text-center margin_nav_mobil">
+                <a href="/pouzivatelia" class="a_header">POUŽÍVATELIA</a>
+              </div>
+              <div class="col-md-2 text-center margin_nav_mobil">
+                <a href="/pouzivatelia" class="a_header">ŽIACI</a>
+              </div>
+              <div class="col-md-2 text-center margin_nav_mobil">
+                <a href="/pouzivatelia" class="a_header">UČITELIA</a>
+              </div>
+              <div class="col-md-3 text-center margin_nav_mobil">
+                <i class="fs-2 bi-person-gear"></i>
+                <span class="profil_header_admin"><%= locals.user.name %> <%= locals.user.surname %></span>
+              </div>
+            <% } %>
           <% } else { %>
             <div class="col-md-2 text-center margin_nav_mobil">
               <a href="/ziak/domov" class="a_header">DOMOV</a>
