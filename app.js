@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+require("dotenv").config();
 
 const errorHandler = require("./middlewares/errorHandler.middleware");
 const pageNotFound = require("./middlewares/notFound.middleware");

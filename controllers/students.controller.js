@@ -2,7 +2,6 @@ const Student = require("../models/student.model");
 const User = require("../models/user.model");
 const fs = require('fs');
 const crypto = require("crypto");
-const nodemailer = require("nodemailer");
 
 /*PROFIL*/
 const getProfilZiak = (req, res) => {
@@ -81,6 +80,7 @@ const getIndexZiak = async (req, res) => {
     }
 }
 
+/*DOMACE ULOHY*/
 const getHomeworks = async (req, res) => {
     try {
         const id_user = res.locals.user.id;
@@ -173,6 +173,7 @@ const insertHomework_ziak = async (req, res) => {
     }
 }
 
+/*TYZDENNE VYZVY*/
 const getChallenges = async (req, res) => {
     try {
         const id_user = res.locals.user.id;
@@ -259,6 +260,7 @@ const insertChallenge_ziak = async (req, res) => {
     }
 }
 
+/*EXKURZIE*/
 const getExcursions = async (req, res) => {
     try {
         const excursions = await Student.getCurrentExcursions();
@@ -302,6 +304,7 @@ const postLogged_in_students = async (req, res) => {
     }
 }
 
+/*UCEBNE MATERIALY*/
 const getTeachingMaterials_category = async (req, res) => {
     try {
         const categories = await Student.getTeaching_materials_category();
@@ -334,6 +337,7 @@ const getTeachingMaterials = async (req, res) => {
     }
 }
 
+/*KVIZY*/
 const getQuizzes = async (req, res) => {
     try {
         const quizzes = await Student.getAllQuizzes();
@@ -356,7 +360,6 @@ const getQuizzesDetails = async (req, res) => {
         return res.status(500).render("shared/500");
     }
 }
-
 module.exports = {
     getProfilZiak,
     getIndexZiak,
