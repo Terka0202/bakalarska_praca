@@ -26,18 +26,18 @@
                             <p class="kontakt_text">Ak máš akékoľvek otázky či už ohľadom úloh alebo materiálov, neváhaj ma kontaktovať!</p>
                         </div>
                     </div>
-                    <form action="/ziak/kontakt/odoslanie-emailu" method="POST">
+                    <form action="/ziak/kontakt/odoslanie-formularu" method="POST">
                         <div class="row justify-content-center d-flex">
                             <div class="col-md-4 col-12">
-                                <input type="text" class="form-control form_input" id="name" name="name" value="<%= locals.user.name %>" placeholder="Meno">
+                                <input type="text" class="form-control form_input" id="name" name="name" placeholder="Meno">
                             </div>
                             <div class="col-md-4 col-12">
-                                <input type="text" class="form-control form_input" id="surname" name="surname" placeholder="Priezvisko" value="<%= locals.user.surname %>">
+                                <input type="text" class="form-control form_input" id="surname" name="surname" placeholder="Priezvisko">
                             </div>
                         </div>
                         <div class="row justify-content-center d-flex">
                             <div class="col-md-8 col-12">
-                                <input type="email" class="form-control form_input" id="email" name="email" placeholder="E-mail" value="<%= locals.user.email %>">
+                                <input type="email" class="form-control form_input" id="email" name="email" placeholder="E-mail">
                             </div>
                         </div>
                         <div class="row justify-content-center d-flex">
