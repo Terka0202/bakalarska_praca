@@ -8,6 +8,6 @@ const {
 
 router.get("/kontakt", getContactForm);
 router.get("/ziak/kontakt", getContactForm_ziak);
-router.post("/ziak/kontakt/odoslanie-emailu", postSendMail);
+router.post("/ziak/kontakt/odoslanie-formularu", postSendMail);
 
 module.exports = router;
