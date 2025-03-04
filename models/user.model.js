@@ -3,7 +3,7 @@ const db = require("../data/database");
 
 class User {
 
-    constructor(paId_user = null, paName, paSurname, paEmail, paPassword, paSalt = null, paIsTeacher) {
+    constructor(paId_user = null, paName, paSurname, paEmail, paPassword, paSalt = null,  paIsTeacher) {
         this.id_user = paId_user;
         this.name = paName;
         this.surname = paSurname;
@@ -115,6 +115,7 @@ class User {
             return res.status(500).render("shared/500");
         }
     }
+
 }
 
 module.exports = User;

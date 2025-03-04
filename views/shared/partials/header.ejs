@@ -27,12 +27,12 @@
           </div>
       <% } else { %>
         <% if (locals.user.isTeacher) { %>
-          <div class="col-md-1 text-center">
-            <a href="/uvod" style="text-decoration: none;">
-                <img src="/obrazky/logo9.png" alt="Logo" width="90" class="text-center img-fluid">
-            </a>
-          </div>
           <% if (!locals.user.isAdmin) { %>
+            <div class="col-md-1 text-center">
+              <a href="/uvod" style="text-decoration: none;">
+                  <img src="/obrazky/logo9.png" alt="Logo" width="90" class="text-center img-fluid">
+              </a>
+            </div>
             <div class="col-md-3 text-center">
               <a href="/ucitel/profil" class="profil_header">
                 <img src="/obrazky/teacher_profile.png" alt="" width="40" style="margin-right: 20px;">
@@ -40,14 +40,19 @@
               </a>
             </div>
           <% } else { %>
-            <div class="col-md-2 text-center">
-              <a href="/pouzivatelia" class="a_header">POUŽÍVATELIA</a>
+            <div class="col-md-1 text-center">
+              <a href="/admin" style="text-decoration: none;">
+                  <img src="/obrazky/logo9.png" alt="Logo" width="90" class="text-center img-fluid">
+              </a>
             </div>
             <div class="col-md-2 text-center">
-              <a href="/pouzivatelia" class="a_header">ŽIACI</a>
+              <a href="/admin/pouzivatelia" class="a_header">POUŽÍVATELIA</a>
             </div>
             <div class="col-md-2 text-center">
-              <a href="/pouzivatelia" class="a_header">UČITELIA</a>
+              <a href="/admin/ziaci" class="a_header">ŽIACI</a>
+            </div>
+            <div class="col-md-2 text-center">
+              <a href="/admin/ucitelia" class="a_header">UČITELIA</a>
             </div>
             <div class="col-md-3 text-center">
               <i class="fs-2 bi-person-gear"></i>
@@ -136,13 +141,13 @@
               </div>
             <% } else { %>
               <div class="col-md-2 text-center margin_nav_mobil">
-                <a href="/pouzivatelia" class="a_header">POUŽÍVATELIA</a>
+                <a href="/admin/pouzivatelia" class="a_header">POUŽÍVATELIA</a>
               </div>
               <div class="col-md-2 text-center margin_nav_mobil">
-                <a href="/pouzivatelia" class="a_header">ŽIACI</a>
+                <a href="/admin/ziaci" class="a_header">ŽIACI</a>
               </div>
               <div class="col-md-2 text-center margin_nav_mobil">
-                <a href="/pouzivatelia" class="a_header">UČITELIA</a>
+                <a href="/admin/ucitelia" class="a_header">UČITELIA</a>
               </div>
               <div class="col-md-3 text-center margin_nav_mobil">
                 <i class="fs-2 bi-person-gear"></i>

@@ -42,3 +42,106 @@
 }
 /*INDEX*/
 /*-------------------------------------------------------------------------------------------------------------*/
+
+/*POUZIVATELIA*/
+.nadpis_pouzivatelia {
+    font-family: 'Antonio', sans-serif;
+    color: #309645;
+    margin-top: 100px;
+    font-size: 60px;
+}
+
+.tr_text {
+    font-family: 'News Cycle', sans-serif;
+    color: #102A4B;
+    font-size: 18px;
+}
+
+.button_activate_pouzivatelia {
+    background-color: #ffcd0b;
+    color: #102A4B;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 70%;
+}
+
+.button_deactivate_pouzivatelia {
+    background-color: #dddddd;
+    color: #102A4B;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 70%;
+}
+
+.tlacidlo_spat {
+    font-family: 'News Cycle', sans-serif; 
+    width: 100%;
+    background-color: #dddddd;
+}
+
+.dropdown_menucko {
+    margin-bottom: 40px;
+}
+/*POUZIVATELIA*/
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/*MEDIA - MOBILY, TABLETY, PC*/
+
+@media (max-width: 767px) {
+
+    .button_activate_pouzivatelia {
+        width: 100%;
+    }
+    
+    .button_deactivate_pouzivatelia {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) { 
+
+    .button_activate_pouzivatelia {
+        width: 100%;
+    }
+    
+    .button_deactivate_pouzivatelia {
+        width: 100%;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1700px) {
+
+    .button_activate_pouzivatelia {
+        width: 100%;
+    }
+    
+    .button_deactivate_pouzivatelia {
+        width: 100%;
+    }
+}
+
+@media (min-width: 1700px) {
+
+    .button_activate_pouzivatelia {
+        width: 70%;
+    }
+    
+    .button_deactivate_pouzivatelia {
+        width: 70%;
+    }
+
+}
