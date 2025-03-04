@@ -34,6 +34,14 @@ const existingLoginZiak = async (req, res) => {
             return;
         }
 
+        if (!existingUser[0].isActivated) {
+            req.session.loginError = "Žiacky účet nie je aktivovaný";
+            req.session.save(() => {
+                res.redirect("/prihlasenie-ucitel");
+            });
+            return;
+        }
+
         const isLoginSuccsesfull = await User.login(password, existingUser[0].password, existingUser[0].salt);
 
         if (isLoginSuccsesfull) {
@@ -96,6 +104,14 @@ const existingLoginUcitel = async (req, res) => {
             return;
         }
 
+        if (!existingUser[0].isActivated) {
+            req.session.loginError = "Učiteľský účet nie je aktivovaný";
+            req.session.save(() => {
+                res.redirect("/prihlasenie-ucitel");
+            });
+            return;
+        }
+
         const isLoginSuccsesfull = await User.login(password, existingUser[0].password, existingUser[0].salt);
 
         if (isLoginSuccsesfull) {
@@ -121,9 +137,10 @@ const existingLoginUcitel = async (req, res) => {
         } else {
             req.session.loginError = "Zadané heslo je nesprávne";
             req.session.save(() => {
-               res.redirect("/prihlasenie-ucitel");
+            res.redirect("/prihlasenie-ucitel");
             });
         }
+        
     } catch (error) {
         console.error(error);
         return res.status(500).render("shared/500");
@@ -155,10 +172,9 @@ const createSignUpZiak = async (req, res) => {
             return res.redirect("/registracia-ziak");
         }
 
-        const newUser = new User(name, surname, email, password, false);
+        const newUser = new User(null, name, surname, email, password, null, false);
         await newUser.signUp();
 
-        /*await User.signUp({name, surname, email, password, password_repeat}) - ked je metoda staticka*/
         res.redirect("/prihlasenie-ziak");
     } catch (error) {
         console.error(error);
